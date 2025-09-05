@@ -11,7 +11,7 @@
 <body class="bg-gray-50 text-gray-800 antialiased">
   <div class="max-w-6xl mx-auto p-4">
     <header
-      class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-white shadow rounded-xl p-5 mb-8 flex items-center justify-between"
+      class="bg-gradient-to-r text-amber-600 rounded-xl p-0 mb-8 flex items-center justify-between"
       role="banner">
       <h1 class="text-3xl font-extrabold tracking-tight">BHIVE Day 2025</h1>
       <div id="top-scorecard" class="ml-4" aria-hidden="false"></div>
@@ -65,7 +65,8 @@
 
       function buildHeaderTop(team) {
         const wrap = document.createElement('div');
-        wrap.className = 'bg-white/80 inline-flex items-center space-x-3 px-3 py-2 rounded shadow backdrop-blur-lg';
+        wrap.style.display = 'none';
+        wrap.className = 'bg-amber-400/20 inline-flex items-center space-x-4 px-4 py-3 rounded backdrop-blur-lg';
         wrap.setAttribute('aria-label', 'Top team');
         const name = document.createElement('div');
         name.className = 'text-sm font-semibold';
