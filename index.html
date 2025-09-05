@@ -402,8 +402,8 @@
         app.innerHTML = '';
 
         const teamsSource = data.teams || [];
-        const pastEvents = data.pastEvents || [];
-        const upcomingEvents = data.upcoming || [];
+        const pastEvents = data.pastEvents.sort((a, b) => new Date(b.date) - new Date(a.date)) || [];
+        const upcomingEvents = data.upcoming.sort((a, b) => new Date(b.date) - new Date(a.date)) || [];
         const rankColors = data.rankColors || {};
 
         // build totals (respecting provided totals if present)

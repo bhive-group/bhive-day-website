@@ -19,15 +19,6 @@
   ],
   "pastEvents": [
     {
-      "name": "Rangoli",
-      "date": "2025-08-26",
-      "placements": [
-        { "pos": 1, "team": "Illuminati", "points": 1400 },
-        { "pos": 2, "team": "Starloads", "points": 840 },
-        { "pos": 3, "team": "The Firebolts", "points": 560 }
-      ]
-    },
-    {
       "name": "Lemon & Spoon",
       "date": "2025-09-05",
       "placements": [
@@ -53,25 +44,35 @@
         { "pos": 2, "team": "Starloads", "points": 840 },
         { "pos": 3, "team": "Illuminati", "points": 560 }
       ]
+    },
+    {
+      "name": "Rangoli",
+      "date": "2025-08-26",
+      "placements": [
+        { "pos": 1, "team": "Illuminati", "points": 1400 },
+        { "pos": 2, "team": "Starloads", "points": 840 },
+        { "pos": 3, "team": "The Firebolts", "points": 560 }
+      ]
     }
   ],
+  
   "upcoming": [
     {
       "name": "8 Ball Pool - Singles",
       "date": "2025-09-06",
       "positions": [
-        { "pos": 1, "points": 0 },
-        { "pos": 2, "points": 0 },
-        { "pos": 3, "points": 0 }
+        { "pos": 1, "points": 1500 },
+        { "pos": 2, "points": 900 },
+        { "pos": 3, "points": 600 }
       ]
     },
     {
-      "name": "8 Ball Pool - Soubles",
+      "name": "8 Ball Pool - Doubles",
       "date": "2025-09-06",
       "positions": [
-        { "pos": 1, "points": 0 },
-        { "pos": 2, "points": 0 },
-        { "pos": 3, "points": 0 }
+        { "pos": 1, "points": 1500 },
+        { "pos": 2, "points": 900 },
+        { "pos": 3, "points": 600 }
       ]
     },
     {
