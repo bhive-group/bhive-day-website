@@ -77,49 +77,64 @@
 
     function createTeamCard(team, rankColors){
       const card = document.createElement('article');
-      card.className = 'relative bg-white shadow rounded-lg p-4 flex items-center overflow-hidden';
+      // make card the relative container but do not add internal padding on the card itself
+      card.className = 'relative bg-white shadow rounded-lg overflow-hidden flex items-center';
       card.setAttribute('role','article');
       card.setAttribute('aria-label', team.name + ' team card');
       card.style.borderLeft = '4px solid ' + (team.color || '#000');
 
-      // main info
-      const info = document.createElement('div');
-      info.className = 'flex-1 pr-4';
+      // inner content wrapper - gives the padding but leaves right edge free for absolute panel
+      const content = document.createElement('div');
+      // right padding must match the panel width so text never overlaps
+      content.className = 'p-4 flex-1 pr-14 md:pr-[72px]';
 
       const name = document.createElement('div');
-      name.className = 'text-xl font-semibold';
+
+      if(team.rank == 1){
+        name.className = 'text-xl font-bold';
+      } else {
+        name.className = 'text-lg font-semibold';
+      }
+
       name.style.color = team.color || '#111827';
       name.textContent = team.name;
-      info.appendChild(name);
+      content.appendChild(name);
 
       const score = document.createElement('div');
       score.className = 'text-sm text-gray-500 mt-1';
       score.textContent = String(team.total) + ' pts';
-      info.appendChild(score);
+      content.appendChild(score);
 
-      card.appendChild(info);
+      card.appendChild(content);
 
-      // right-side rank panel
+      // right-side rank panel (positioned absolutely so it spans the card edge-to-edge)
       const rank = team.rank || 0;
       const baseColor = safeRankColor(rankColors, rank);
       const panel = document.createElement('div');
-      panel.className = 'flex-shrink-0 flex items-center justify-center text-white font-bold';
-      // responsive width: w-14 (~56px) on small, md:w-20 (~80px) on md+
-      panel.classList.add('w-14','md:w-20','h-14','md:h-auto','py-4');
-      // align to full height
-      panel.style.display = 'flex';
-      panel.style.flexDirection = 'column';
-      panel.style.justifyContent = 'center';
-      panel.style.alignItems = 'center';
-      panel.style.height = '100%';
-      // textured overlay using linear-gradient on top of base color
-      panel.style.background = `linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)), ${baseColor}`;
-      // ensure rounded on right side to match card
-      panel.style.borderTopRightRadius = '12px';
-      panel.style.borderBottomRightRadius = '12px';
-      panel.style.padding = '0.5rem';
-      panel.style.minWidth = '56px';
+      // absolute full-height panel flush to the card's right border
+      panel.className = 'absolute right-0 top-0 bottom-0 flex items-center justify-center text-white font-bold rounded-r-lg';
+      // mobile width 56px (w-14), desktop 72px (arbitrary value)
+      panel.classList.add('w-14','md:w-[72px]');
+      // ensure panel doesn't shrink and uses box-sizing
       panel.style.boxSizing = 'border-box';
+      // textured overlay using linear-gradient on top of base color
+      // panel.style.background = `linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)), ${baseColor}`;
+
+      // // Border should be 20% opacity
+      // panel.style.borderColor = `${baseColor}`;
+      // panel.style.borderRight = `10px solid ${baseColor}`;
+
+      if(team.rank == 1){
+        // card.style.background = `linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04)), ${baseColor}`;
+        card.style.background = 'linear-gradient(135deg, #fff8e1, #ffffff)';
+        panel.style.color = `linear-gradient(135deg, #ff9800, #f57c00)`;
+        panel.style.scale = '1.5';
+      }
+      
+
+      panel.style.color = `${baseColor}`;
+      // center rank number and ensure it appears large
+      panel.style.padding = '0.5rem';
 
       const rankText = document.createElement('div');
       rankText.className = 'text-2xl';
