@@ -8,8 +8,8 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
   <div class="max-w-6xl mx-auto p-4">
-    <header class="bg-white shadow rounded-lg p-4 mb-6 flex items-center justify-between" role="banner">
-      <h1 class="text-2xl font-bold">BHIVE Day 2025</h1>
+    <header class="bg-gradient-to-r from-amber-400 via-amber-600 to-orange-700 text-white shadow rounded-xl p-5 mb-8 flex items-center justify-between" role="banner">
+      <h1 class="text-3xl font-extrabold tracking-tight">BHIVE Day 2025</h1>
       <div id="top-scorecard" class="ml-4" aria-hidden="false"></div>
     </header>
 
@@ -61,7 +61,7 @@
 
     function buildHeaderTop(team){
       const wrap = document.createElement('div');
-      wrap.className = 'bg-gray-50 inline-flex items-center space-x-3 px-3 py-2 rounded';
+      wrap.className = 'bg-white/50 inline-flex items-center space-x-3 px-3 py-2 rounded shadow backdrop-blur-lg';
       wrap.setAttribute('aria-label','Top team');
       const name = document.createElement('div');
       name.className = 'text-sm font-semibold';
@@ -166,7 +166,7 @@
       return section;
     }
 
-    function applyEventWinners(pastEvents, teamsByName){
+    function applyEventWinners(eventWinners, teamsByName){
       const section = document.createElement('section');
       section.className = 'mb-8';
       const h = document.createElement('h2');
@@ -177,7 +177,7 @@
       const grid = document.createElement('div');
       grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-4';
 
-      (pastEvents || []).forEach(ev=>{
+      (eventWinners || []).forEach(ev=>{
         const card = document.createElement('article');
         card.className = 'bg-white shadow rounded-lg p-4';
         const title = document.createElement('h3');
@@ -186,12 +186,10 @@
         card.appendChild(title);
 
         // Date line (small, muted)
-        if(ev.date){
-          const dateEl = document.createElement('div');
-          dateEl.className = 'text-xs text-gray-500 mb-2';
-          dateEl.textContent = ev.date;
-          card.appendChild(dateEl);
-        }
+        // const dateEl = document.createElement('div');
+        // dateEl.className = 'text-xs text-gray-500 mb-2';
+        // dateEl.textContent = ev.date || 'Missing';
+        // card.appendChild(dateEl);
 
         const list = document.createElement('ol');
         list.className = 'list-decimal list-inside space-y-1';
@@ -304,12 +302,10 @@
         nameEl.className = 'font-medium';
         nameEl.textContent = ev.name;
         nameWrap.appendChild(nameEl);
-        if(ev.date){
-          const dateEl = document.createElement('div');
-          dateEl.className = 'text-xs text-gray-500';
-          dateEl.textContent = ev.date;
-          nameWrap.appendChild(dateEl);
-        }
+        const dateEl = document.createElement('div');
+        dateEl.className = 'text-xs text-gray-500';
+        dateEl.textContent = ev.date || 'Missing';
+        nameWrap.appendChild(dateEl);
         nameTd.appendChild(nameWrap);
         tr.appendChild(nameTd);
 
@@ -319,7 +315,7 @@
           const td = document.createElement('td');
           td.className = 'p-3 text-center';
           const label = (pos.pos===1?'1st':pos.pos===2?'2nd':pos.pos+'th');
-          td.textContent = `${label} — ${pos.points} pts`;
+          td.textContent = `${label} · ${pos.points} pts`;
           if(i===0) td.classList.add('font-semibold');
           tr.appendChild(td);
         }
@@ -337,12 +333,10 @@
         nameEl.className = 'font-medium';
         nameEl.textContent = ev.name;
         nameWrap.appendChild(nameEl);
-        if(ev.date){
-          const dateEl = document.createElement('div');
-          dateEl.className = 'text-xs text-gray-500';
-          dateEl.textContent = ev.date;
-          nameWrap.appendChild(dateEl);
-        }
+        const dateEl = document.createElement('div');
+        dateEl.className = 'text-xs text-gray-500';
+        dateEl.textContent = ev.date || 'Missing';
+        nameWrap.appendChild(dateEl);
         nameTd.appendChild(nameWrap);
         tr.appendChild(nameTd);
 
@@ -352,7 +346,7 @@
           const td = document.createElement('td');
           td.className = 'p-3 text-center';
           const label = (pos.pos===1?'1st':pos.pos===2?'2nd':pos.pos+'th');
-          td.textContent = `${label} — ${pos.points} pts`;
+          td.textContent = `${label} · ${pos.points} pts`;
           if(i===0) td.classList.add('font-semibold');
           tr.appendChild(td);
         }
@@ -388,10 +382,6 @@
       const teamsSource = data.teams || [];
       const pastEvents = data.pastEvents || [];
       const upcomingEvents = data.upcoming || [];
-      // Ensure all events have a date; default to today if missing
-      const todayStr = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-      pastEvents.forEach(ev => { if(!ev.date) ev.date = todayStr; });
-      upcomingEvents.forEach(ev => { if(!ev.date) ev.date = todayStr; });
       const rankColors = data.rankColors || {};
 
       // build totals (respecting provided totals if present)

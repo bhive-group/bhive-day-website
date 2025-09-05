@@ -20,6 +20,7 @@
   "pastEvents": [
     {
       "name": "Rangoli",
+      "date": "2025-08-26",
       "placements": [
         { "pos": 1, "team": "Illuminati", "points": 1400 },
         { "pos": 2, "team": "Starloads", "points": 840 },
@@ -28,6 +29,7 @@
     },
     {
       "name": "Lemon & Spoon",
+      "date": "2025-09-05",
       "placements": [
         { "pos": 1, "team": "Starloads", "points": 1000 },
         { "pos": 2, "team": "The Firebolts", "points": 600 },
@@ -35,25 +37,28 @@
       ]
     },
     {
-      "name": "Name the Logo",
+      "name": "Name the Logo & Tagline",
+      "date": "2025-09-05",
       "placements": [
-        { "pos": 1, "team": "Starloads", "points": 1400 },
+        { "pos": 1, "team": "Thunder Bees", "points": 1400 },
         { "pos": 2, "team": "The Firebolts", "points": 840 },
         { "pos": 3, "team": "Illuminati", "points": 560 }
       ]
     },
     {
       "name": "Dart",
+      "date": "2025-09-05",
       "placements": [
         { "pos": 1, "team": "Thunder Bees", "points": 1400 },
-        { "pos": 2, "team": "Illuminati", "points": 840 },
-        { "pos": 3, "team": "Starloads", "points": 560 }
+        { "pos": 2, "team": "Starloads", "points": 840 },
+        { "pos": 3, "team": "Illuminati", "points": 560 }
       ]
     }
   ],
   "upcoming": [
     {
       "name": "Field Cricket (Draft)",
+      "date": "1970-01-01",
       "positions": [
         { "pos": 1, "points": 9200 },
         { "pos": 2, "points": 5520 },
@@ -62,6 +67,7 @@
     },
     {
       "name": "Badminton (Draft)",
+      "date": "1970-01-01",
       "positions": [
         { "pos": 1, "points": 5400 },
         { "pos": 2, "points": 3240 },
@@ -76,4 +82,3 @@
     "4": "#bdbdbd"
   }
 }
-
