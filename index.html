@@ -166,7 +166,7 @@
       return section;
     }
 
-    function applyPastEvents(pastEvents, teamsByName){
+    function applyEventWinners(pastEvents, teamsByName){
       const section = document.createElement('section');
       section.className = 'mb-8';
       const h = document.createElement('h2');
@@ -181,9 +181,17 @@
         const card = document.createElement('article');
         card.className = 'bg-white shadow rounded-lg p-4';
         const title = document.createElement('h3');
-        title.className = 'text-lg font-bold text-gray-900 mb-3 pb-1 border-b border-gray-200';
+        title.className = 'text-lg font-bold text-gray-900 mb-2 pb-1 border-b border-gray-200';
         title.textContent = ev.name;
         card.appendChild(title);
+
+        // Date line (small, muted)
+        if(ev.date){
+          const dateEl = document.createElement('div');
+          dateEl.className = 'text-xs text-gray-500 mb-2';
+          dateEl.textContent = ev.date;
+          card.appendChild(dateEl);
+        }
 
         const list = document.createElement('ol');
         list.className = 'list-decimal list-inside space-y-1';
@@ -207,7 +215,60 @@
         grid.appendChild(card);
       });
 
+      // Append grid
       section.appendChild(grid);
+
+      // Placeholder skeletons to fill rows
+      function createPlaceholderCard(){
+        const ph = document.createElement('article');
+        ph.className = 'bg-white shadow rounded-lg p-4';
+        ph.setAttribute('aria-hidden', 'true');
+        ph.dataset.placeholder = 'true';
+        const bar1 = document.createElement('div');
+        bar1.className = 'h-5 bg-gray-200 rounded w-2/3 mb-3';
+        ph.appendChild(bar1);
+        const barDate = document.createElement('div');
+        barDate.className = 'h-3 bg-gray-200 rounded w-24 mb-3';
+        ph.appendChild(barDate);
+        for(let i=0;i<3;i++){
+          const line = document.createElement('div');
+          line.className = 'h-4 bg-gray-200 rounded w-full mb-2';
+          ph.appendChild(line);
+        }
+        return ph;
+      }
+
+      function padPlaceholders(){
+        const totalCards = grid.querySelectorAll('article:not([data-placeholder="true"])').length;
+        grid.querySelectorAll('article[data-placeholder="true"]').forEach(n=>n.remove());
+        let cols = 3;
+        try {
+          const comp = getComputedStyle(grid);
+          const tpl = comp.gridTemplateColumns || '';
+          const parts = tpl.trim().split(/\s+/).filter(Boolean);
+          if(parts.length > 0){ cols = parts.length; }
+        } catch(e) {}
+        cols = Math.max(1, cols);
+        const remainder = totalCards % cols;
+        const needed = remainder === 0 ? 0 : (cols - remainder);
+        for(let i=0;i<needed;i++) grid.appendChild(createPlaceholderCard());
+      }
+
+      // Initial pad assuming 3 columns, then refine on next frame
+      (function initialPad(){
+        const totalCards = grid.querySelectorAll('article').length;
+        const cols = 3;
+        const remainder = totalCards % cols;
+        const needed = remainder === 0 ? 0 : (cols - remainder);
+        for(let i=0;i<needed;i++) grid.appendChild(createPlaceholderCard());
+      })();
+      requestAnimationFrame(padPlaceholders);
+      let resizeTimeout;
+      window.addEventListener('resize', ()=>{
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(padPlaceholders, 100);
+      }, { passive: true });
+
       return section;
     }
 
@@ -238,7 +299,18 @@
         tr.className = 'border-t';
         const nameTd = document.createElement('td');
         nameTd.className = 'p-3';
-        nameTd.textContent = ev.name;
+        const nameWrap = document.createElement('div');
+        const nameEl = document.createElement('div');
+        nameEl.className = 'font-medium';
+        nameEl.textContent = ev.name;
+        nameWrap.appendChild(nameEl);
+        if(ev.date){
+          const dateEl = document.createElement('div');
+          dateEl.className = 'text-xs text-gray-500';
+          dateEl.textContent = ev.date;
+          nameWrap.appendChild(dateEl);
+        }
+        nameTd.appendChild(nameWrap);
         tr.appendChild(nameTd);
 
         const positions = (ev.positions || []).sort((a,b)=>a.pos-b.pos);
@@ -260,7 +332,18 @@
         tr.className = 'border-t bg-gray-50';
         const nameTd = document.createElement('td');
         nameTd.className = 'p-3';
-        nameTd.textContent = ev.name;
+        const nameWrap = document.createElement('div');
+        const nameEl = document.createElement('div');
+        nameEl.className = 'font-medium';
+        nameEl.textContent = ev.name;
+        nameWrap.appendChild(nameEl);
+        if(ev.date){
+          const dateEl = document.createElement('div');
+          dateEl.className = 'text-xs text-gray-500';
+          dateEl.textContent = ev.date;
+          nameWrap.appendChild(dateEl);
+        }
+        nameTd.appendChild(nameWrap);
         tr.appendChild(nameTd);
 
         const positions = (ev.placements || []).sort((a,b)=>a.pos-b.pos);
@@ -305,6 +388,10 @@
       const teamsSource = data.teams || [];
       const pastEvents = data.pastEvents || [];
       const upcomingEvents = data.upcoming || [];
+      // Ensure all events have a date; default to today if missing
+      const todayStr = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      pastEvents.forEach(ev => { if(!ev.date) ev.date = todayStr; });
+      upcomingEvents.forEach(ev => { if(!ev.date) ev.date = todayStr; });
       const rankColors = data.rankColors || {};
 
       // build totals (respecting provided totals if present)
@@ -338,7 +425,7 @@
       headerSlot.appendChild(headerCard);
 
       app.appendChild(applyTeamTotals(teams, rankColors));
-      app.appendChild(applyPastEvents(pastEvents, teamsByName));
+      app.appendChild(applyEventWinners(pastEvents, teamsByName));
       app.appendChild(applyAllEvents(pastEvents, upcomingEvents));
     }).catch(err=>{
       console.error(err);
