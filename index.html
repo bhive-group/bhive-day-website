@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Scoreboard</title>
+  <title>BHIVE Day 2025</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
   <div class="max-w-6xl mx-auto p-4">
-    <header class="mb-6">
-      <h1 class="text-2xl font-bold">Scoreboard</h1>
-      <p class="text-sm text-gray-600">Dynamic scoreboard loaded from data.json</p>
+    <header class="bg-white shadow rounded p-4 mb-6 flex items-center justify-between">
+      <h1 class="text-2xl font-bold">BHIVE Day 2025</h1>
+      <div id="top-scorecard" class="ml-4"></div>
     </header>
 
     <main id="app" aria-live="polite">
@@ -24,7 +24,7 @@
     const loading = document.getElementById('loading');
 
     function hexToRgb(hex){
-      const h = hex.replace('#','');
+      const h = (hex||'#000').replace('#','');
       const full = h.length===3? h.split('').map(s=>s+s).join(''): h;
       const bigint = parseInt(full,16);
       return [(bigint>>16)&255, (bigint>>8)&255, bigint&255];
@@ -53,7 +53,6 @@
       const bb = Math.round(b*(1-t));
       return '#'+[br,bg,bb].map(v=>v.toString(16).padStart(2,'0')).join('');
     }
-
     function ordinal(pos){
       if(pos%100>=11 && pos%100<=13) return pos+'th';
       const m = pos%10;
@@ -61,6 +60,21 @@
       if(m===2) return pos+'nd';
       if(m===3) return pos+'rd';
       return pos+'th';
+    }
+
+    function buildHeaderTop(team){
+      const wrap = document.createElement('div');
+      wrap.className = 'bg-gray-50 inline-flex items-center space-x-3 px-3 py-2 rounded';
+      const name = document.createElement('div');
+      name.className = 'text-sm font-semibold';
+      name.style.color = team.color || '#111827';
+      name.textContent = team.name;
+      const meta = document.createElement('div');
+      meta.className = 'text-xs text-gray-500';
+      meta.textContent = `#${team.rank} · ${team.total} pts`;
+      wrap.appendChild(name);
+      wrap.appendChild(meta);
+      return wrap;
     }
 
     function applyTeamTotals(teams, rankColors){
@@ -76,41 +90,42 @@
 
       teams.forEach(team=>{
         const card = document.createElement('article');
-        card.className = 'relative bg-white shadow-sm rounded p-4 overflow-hidden';
+        card.className = 'relative bg-white shadow-sm rounded p-4 flex items-start';
         card.style.borderLeft = '4px solid ' + (team.color || '#000');
 
-        const rankColor = rankColors[String(team.rank)] || '#111827';
-        let badgeBg = rankColor;
-        const whiteContrast = contrastRatio(badgeBg, '#ffffff');
-        if(whiteContrast < 4.5){
-          badgeBg = blend(badgeBg, 0.35);
-        }
-
-        const badge = document.createElement('div');
-        badge.className = 'absolute -top-3 -left-3 px-3 py-1 rounded-md text-sm font-bold';
-        badge.style.backgroundColor = badgeBg;
-        badge.style.color = '#ffffff';
-        badge.setAttribute('aria-hidden','true');
-        badge.textContent = 'Rank ' + team.rank;
-        card.appendChild(badge);
+        const info = document.createElement('div');
+        info.className = 'flex-1';
 
         const name = document.createElement('div');
         name.className = 'text-xl font-semibold';
         name.style.color = team.color || '#111827';
         name.textContent = team.name;
-        card.appendChild(name);
+        info.appendChild(name);
 
         const score = document.createElement('div');
         score.className = 'text-sm text-gray-500 mt-1';
         score.textContent = String(team.total) + ' pts';
-        card.appendChild(score);
+        info.appendChild(score);
 
-        const rankNum = document.createElement('div');
-        rankNum.className = 'absolute top-3 right-3 text-2xl font-extrabold';
-        rankNum.style.color = rankColor;
-        rankNum.textContent = team.rank;
-        rankNum.setAttribute('aria-label','Team rank');
-        card.appendChild(rankNum);
+        card.appendChild(info);
+
+        // rank pill on right
+        const rankColor = rankColors[String(team.rank)] || '#111827';
+        let pillBg = rankColor;
+        if(contrastRatio(pillBg, '#ffffff') < 4.5) pillBg = blend(pillBg, 0.35);
+
+        const pill = document.createElement('div');
+        pill.className = 'ml-3 flex-shrink-0 flex items-center justify-center text-white font-bold';
+        pill.style.backgroundColor = pillBg;
+        pill.style.color = '#ffffff';
+        pill.style.minWidth = '40px';
+        pill.style.height = '40px';
+        pill.style.borderRadius = '9999px';
+        pill.style.fontSize = '1.25rem';
+        pill.textContent = team.rank;
+        pill.setAttribute('aria-label','Rank '+team.rank);
+
+        card.appendChild(pill);
 
         grid.appendChild(card);
       });
@@ -130,7 +145,7 @@
       const grid = document.createElement('div');
       grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
 
-      pastEvents.forEach(ev=>{
+      (pastEvents || []).forEach(ev=>{
         const card = document.createElement('article');
         card.className = 'bg-white shadow-sm rounded p-4';
         const title = document.createElement('h3');
@@ -222,7 +237,7 @@
     }
 
     fetch('./data.json', {cache: 'no-store'}).then(r=>{
-      if(!r.ok) throw new Error('Failed to load data.json: ' + r.status);
+      if(!r.ok) throw new Error('Failed to load data.json: '+r.status);
       return r.json();
     }).then(data=>{
       loading?.remove();
@@ -240,7 +255,7 @@
       });
 
       teamsSource.forEach(t=>{
-        if(!(t.name in totals)) totals[t.name] = 0;
+        if(!(t.name in totals)) totals[t.name] = t.total || 0;
       });
 
       const teams = teamsSource.map(t=>({
@@ -254,6 +269,13 @@
 
       const teamsByName = {};
       teams.forEach(t=>teamsByName[t.name] = t);
+
+      // header top team
+      const top = teams[0] || {name:'—', color:'#111827', rank:1, total:0};
+      const headerCard = buildHeaderTop(top);
+      const headerSlot = document.getElementById('top-scorecard');
+      headerSlot.innerHTML = '';
+      headerSlot.appendChild(headerCard);
 
       app.appendChild(applyTeamTotals(teams, rankColors));
       app.appendChild(applyPastEvents(pastEvents, teamsByName));
