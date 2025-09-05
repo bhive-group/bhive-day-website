@@ -1,14 +1,18 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>BHIVE Day 2025</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50 text-gray-800 antialiased">
   <div class="max-w-6xl mx-auto p-4">
-    <header class="bg-gradient-to-r from-amber-400 via-amber-600 to-orange-700 text-white shadow rounded-xl p-5 mb-8 flex items-center justify-between" role="banner">
+    <header
+      class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-white shadow rounded-xl p-5 mb-8 flex items-center justify-between"
+      role="banner">
       <h1 class="text-3xl font-extrabold tracking-tight">BHIVE Day 2025</h1>
       <div id="top-scorecard" class="ml-4" aria-hidden="false"></div>
     </header>
@@ -19,410 +23,428 @@
   </div>
 
   <script>
-  (function(){
-    // minimal helpers
-    function qs(id){ return document.getElementById(id); }
+    (function () {
+      // minimal helpers
+      function qs(id) { return document.getElementById(id); }
 
-    function hexToRgb(hex){
-      if(!hex) return [0,0,0];
-      const h = hex.replace('#','');
-      const full = h.length===3? h.split('').map(s=>s+s).join(''): h;
-      const bigint = parseInt(full,16);
-      return [(bigint>>16)&255, (bigint>>8)&255, bigint&255];
-    }
-
-    function contrastWithWhite(hex){
-      const [r,g,b]=hexToRgb(hex);
-      // relative luminance
-      const a=[r,g,b].map(v=>{
-        v/=255;
-        return v<=0.03928? v/12.92: Math.pow((v+0.055)/1.055,2.4);
-      });
-      const L = 0.2126*a[0]+0.7152*a[1]+0.0722*a[2];
-      const whiteL = 1;
-      const darker = Math.min(L, whiteL);
-      const lighter = Math.max(L, whiteL);
-      return (lighter+0.05)/(darker+0.05);
-    }
-
-    function safeRankColor(rankColors, rank){
-      const c = (rankColors && rankColors[String(rank)]) || '#64748b';
-      // if contrast with white is too low, darken slightly
-      if(contrastWithWhite(c) < 3.5){
-        // darken by blending
-        const [r,g,b] = hexToRgb(c);
-        const br = Math.round(r*0.8);
-        const bg = Math.round(g*0.8);
-        const bb = Math.round(b*0.8);
-        return '#'+[br,bg,bb].map(v=>v.toString(16).padStart(2,'0')).join('');
-      }
-      return c;
-    }
-
-    function buildHeaderTop(team){
-      const wrap = document.createElement('div');
-      wrap.className = 'bg-white/50 inline-flex items-center space-x-3 px-3 py-2 rounded shadow backdrop-blur-lg';
-      wrap.setAttribute('aria-label','Top team');
-      const name = document.createElement('div');
-      name.className = 'text-sm font-semibold';
-      name.style.color = team.color || '#111827';
-      name.textContent = team.name;
-      const meta = document.createElement('div');
-      meta.className = 'text-xs text-gray-500';
-      meta.textContent = `#${team.rank} · ${team.total} pts`;
-      wrap.appendChild(name);
-      wrap.appendChild(meta);
-      return wrap;
-    }
-
-    function createTeamCard(team, rankColors){
-      const card = document.createElement('article');
-      // make card the relative container but do not add internal padding on the card itself
-      card.className = 'relative bg-white shadow rounded-lg overflow-hidden flex items-center';
-      card.setAttribute('role','article');
-      card.setAttribute('aria-label', team.name + ' team card');
-      card.style.borderLeft = '4px solid ' + (team.color || '#000');
-
-      // inner content wrapper - gives the padding but leaves right edge free for absolute panel
-      const content = document.createElement('div');
-      // right padding must match the panel width so text never overlaps
-      content.className = 'p-4 flex-1 pr-14 md:pr-[72px]';
-
-      const name = document.createElement('div');
-
-      if(team.rank == 1){
-        name.className = 'text-xl font-bold';
-      } else {
-        name.className = 'text-lg font-semibold';
+      function hexToRgb(hex) {
+        if (!hex) return [0, 0, 0];
+        const h = hex.replace('#', '');
+        const full = h.length === 3 ? h.split('').map(s => s + s).join('') : h;
+        const bigint = parseInt(full, 16);
+        return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
       }
 
-      name.style.color = team.color || '#111827';
-      name.textContent = team.name;
-      content.appendChild(name);
-
-      const score = document.createElement('div');
-      score.className = 'text-sm text-gray-500 mt-1';
-      score.textContent = String(team.total) + ' pts';
-      content.appendChild(score);
-
-      card.appendChild(content);
-
-      // right-side rank panel (positioned absolutely so it spans the card edge-to-edge)
-      const rank = team.rank || 0;
-      const baseColor = safeRankColor(rankColors, rank);
-      const panel = document.createElement('div');
-      // absolute full-height panel flush to the card's right border
-      panel.className = 'absolute right-0 top-0 bottom-0 flex items-center justify-center text-white font-bold rounded-r-lg';
-      // mobile width 56px (w-14), desktop 72px (arbitrary value)
-      panel.classList.add('w-14','md:w-[72px]');
-      // ensure panel doesn't shrink and uses box-sizing
-      panel.style.boxSizing = 'border-box';
-      // textured overlay using linear-gradient on top of base color
-      // panel.style.background = `linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)), ${baseColor}`;
-
-      // // Border should be 20% opacity
-      // panel.style.borderColor = `${baseColor}`;
-      // panel.style.borderRight = `10px solid ${baseColor}`;
-
-      if(team.rank == 1){
-        // card.style.background = `linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04)), ${baseColor}`;
-        card.style.background = 'linear-gradient(135deg, #fff8e1, #ffffff)';
-        panel.style.color = `linear-gradient(135deg, #ff9800, #f57c00)`;
-        panel.style.scale = '1.5';
+      function contrastWithWhite(hex) {
+        const [r, g, b] = hexToRgb(hex);
+        // relative luminance
+        const a = [r, g, b].map(v => {
+          v /= 255;
+          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        });
+        const L = 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+        const whiteL = 1;
+        const darker = Math.min(L, whiteL);
+        const lighter = Math.max(L, whiteL);
+        return (lighter + 0.05) / (darker + 0.05);
       }
-      
 
-      panel.style.color = `${baseColor}`;
-      // center rank number and ensure it appears large
-      panel.style.padding = '0.5rem';
+      function safeRankColor(rankColors, rank) {
+        const c = (rankColors && rankColors[String(rank)]) || '#64748b';
+        // if contrast with white is too low, darken slightly
+        if (contrastWithWhite(c) < 3.5) {
+          // darken by blending
+          const [r, g, b] = hexToRgb(c);
+          const br = Math.round(r * 0.8);
+          const bg = Math.round(g * 0.8);
+          const bb = Math.round(b * 0.8);
+          return '#' + [br, bg, bb].map(v => v.toString(16).padStart(2, '0')).join('');
+        }
+        return c;
+      }
 
-      const rankText = document.createElement('div');
-      rankText.className = 'text-2xl';
-      rankText.textContent = String(rank);
-      rankText.setAttribute('aria-hidden','false');
-      panel.appendChild(rankText);
+      function buildHeaderTop(team) {
+        const wrap = document.createElement('div');
+        wrap.className = 'bg-white/80 inline-flex items-center space-x-3 px-3 py-2 rounded shadow backdrop-blur-lg';
+        wrap.setAttribute('aria-label', 'Top team');
+        const name = document.createElement('div');
+        name.className = 'text-sm font-semibold';
+        name.style.color = team.color || '#111827';
+        name.textContent = team.name;
+        const meta = document.createElement('div');
+        meta.className = 'text-xs text-gray-500';
+        meta.textContent = `#${team.rank} · ${team.total} pts`;
+        wrap.appendChild(name);
+        wrap.appendChild(meta);
+        return wrap;
+      }
 
-      card.appendChild(panel);
-
-      return card;
-    }
-
-    function applyTeamTotals(teams, rankColors){
-      const section = document.createElement('section');
-      section.className = 'mb-8';
-      const h = document.createElement('h2');
-      h.className = 'text-lg font-semibold mb-3';
-      h.textContent = 'Team Totals';
-      section.appendChild(h);
-
-      const grid = document.createElement('div');
-      grid.className = 'grid grid-cols-2 md:grid-cols-4 gap-4';
-
-      teams.forEach(team=>{
-        grid.appendChild(createTeamCard(team, rankColors));
-      });
-
-      section.appendChild(grid);
-      return section;
-    }
-
-    function applyEventWinners(eventWinners, teamsByName){
-      const section = document.createElement('section');
-      section.className = 'mb-8';
-      const h = document.createElement('h2');
-      h.className = 'text-lg font-semibold mb-3';
-      h.textContent = 'Event Winners';
-      section.appendChild(h);
-
-      const grid = document.createElement('div');
-      grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-4';
-
-      (eventWinners || []).forEach(ev=>{
+      function createTeamCard(team, rankColors) {
         const card = document.createElement('article');
-        card.className = 'bg-white shadow rounded-lg p-4';
-        const title = document.createElement('h3');
-        title.className = 'text-lg font-bold text-gray-900 mb-2 pb-1 border-b border-gray-200';
-        title.textContent = ev.name;
-        card.appendChild(title);
+        // make card the relative container but do not add internal padding on the card itself
+        card.className = 'relative bg-white shadow rounded-lg overflow-hidden flex items-center';
+        card.setAttribute('role', 'article');
+        card.setAttribute('aria-label', team.name + ' team card');
 
-        // Date line (small, muted)
-        // const dateEl = document.createElement('div');
-        // dateEl.className = 'text-xs text-gray-500 mb-2';
-        // dateEl.textContent = ev.date || 'Missing';
-        // card.appendChild(dateEl);
+        // inner content wrapper - gives the padding but leaves right edge free for absolute panel
+        const content = document.createElement('div');
+        // right padding must match the panel width so text never overlaps
+        content.className = 'p-4 flex-1 pr-14 md:pr-[72px]';
 
-        const list = document.createElement('ol');
-        list.className = 'list-decimal list-inside space-y-1';
+        const name = document.createElement('div');
 
-        (ev.placements || []).sort((a,b)=>a.pos-b.pos).forEach(place=>{
-          const li = document.createElement('li');
-          li.className = 'flex justify-between';
-          const teamSpan = document.createElement('span');
-          const team = teamsByName[place.team];
-          teamSpan.textContent = place.team;
-          teamSpan.style.color = team?.color || '#111827';
-          const pts = document.createElement('span');
-          pts.className = 'text-sm text-gray-500';
-          pts.textContent = place.points + ' pts';
-          li.appendChild(teamSpan);
-          li.appendChild(pts);
-          list.appendChild(li);
-        });
-
-        card.appendChild(list);
-        grid.appendChild(card);
-      });
-
-      // Append grid
-      section.appendChild(grid);
-
-      // Placeholder skeletons to fill rows
-      function createPlaceholderCard(){
-        const ph = document.createElement('article');
-        ph.className = 'bg-white shadow rounded-lg p-4';
-        ph.setAttribute('aria-hidden', 'true');
-        ph.dataset.placeholder = 'true';
-        const bar1 = document.createElement('div');
-        bar1.className = 'h-5 bg-gray-200 rounded w-2/3 mb-3';
-        ph.appendChild(bar1);
-        const barDate = document.createElement('div');
-        barDate.className = 'h-3 bg-gray-200 rounded w-24 mb-3';
-        ph.appendChild(barDate);
-        for(let i=0;i<3;i++){
-          const line = document.createElement('div');
-          line.className = 'h-4 bg-gray-200 rounded w-full mb-2';
-          ph.appendChild(line);
+        if (team.rank == 1) {
+          name.className = 'text-xl font-bold';
+          card.style.border = '0.11px double ' + (team.color || '#000');
+          card.style.borderLeft = '4px solid ' + (team.color || '#000');
+        } else {
+          name.className = 'text-lg font-semibold';
+          card.style.borderLeft = '4px solid ' + (team.color || '#000');
         }
-        return ph;
+
+        name.style.color = team.color || '#111827';
+        name.textContent = team.name;
+        content.appendChild(name);
+
+        const score = document.createElement('div');
+        score.className = 'text-sm text-gray-500 mt-1';
+        score.textContent = String(team.total) + ' pts';
+        content.appendChild(score);
+
+        card.appendChild(content);
+
+        // right-side rank panel (positioned absolutely so it spans the card edge-to-edge)
+        const rank = team.rank || 0;
+        const baseColor = safeRankColor(rankColors, rank);
+        const panel = document.createElement('div');
+        // absolute full-height panel flush to the card's right border
+        panel.className = 'absolute right-0 top-0 bottom-0 flex items-center justify-center text-white font-bold rounded-r-lg';
+        // mobile width 56px (w-14), desktop 72px (arbitrary value)
+        panel.classList.add('w-14', 'md:w-[72px]');
+        // ensure panel doesn't shrink and uses box-sizing
+        panel.style.boxSizing = 'border-box';
+        // textured overlay using linear-gradient on top of base color
+        // panel.style.background = `linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)), ${baseColor}`;
+
+        // // Border should be 20% opacity
+        // panel.style.borderColor = `${baseColor}`;
+        // panel.style.borderRight = `10px solid ${baseColor}`;
+
+        if (team.rank == 1) {
+          card.style.background = `linear-gradient(90deg, #ffffff, #fff8e1 75%, ${baseColor} 400%)`;
+
+          panel.style.scale = '1.5';
+        } else {
+          card.style.background = `linear-gradient(90deg, #ffffff, #fff8e1 200%, ${baseColor} 400%)`;
+          card.style.color = `${baseColor}`;
+          // card.style.background = `linear-gradient(90deg, #ffffff, ${baseColor})`;
+          // panel.style.background = `linear-gradient(to right, #ffffff, #eeeeee 70%, ${baseColor} 120%)`;
+        }
+
+        panel.style.color = `${baseColor}`;
+
+        // center rank number and ensure it appears large
+        panel.style.padding = '0.5rem';
+
+        const rankText = document.createElement('div');
+        rankText.className = 'text-2xl';
+        rankText.textContent = String(rank);
+        rankText.setAttribute('aria-hidden', 'false');
+        panel.appendChild(rankText);
+
+        card.appendChild(panel);
+
+        return card;
       }
 
-      function padPlaceholders(){
-        const totalCards = grid.querySelectorAll('article:not([data-placeholder="true"])').length;
-        grid.querySelectorAll('article[data-placeholder="true"]').forEach(n=>n.remove());
-        let cols = 3;
-        try {
-          const comp = getComputedStyle(grid);
-          const tpl = comp.gridTemplateColumns || '';
-          const parts = tpl.trim().split(/\s+/).filter(Boolean);
-          if(parts.length > 0){ cols = parts.length; }
-        } catch(e) {}
-        cols = Math.max(1, cols);
-        const remainder = totalCards % cols;
-        const needed = remainder === 0 ? 0 : (cols - remainder);
-        for(let i=0;i<needed;i++) grid.appendChild(createPlaceholderCard());
+      function applyTeamTotals(teams, rankColors) {
+        const section = document.createElement('section');
+        section.className = 'mb-8';
+        const h = document.createElement('h2');
+        h.className = 'text-lg font-semibold mb-3';
+        h.textContent = 'Team Totals';
+        section.appendChild(h);
+
+        const grid = document.createElement('div');
+        grid.className = 'grid grid-cols-2 md:grid-cols-4 gap-4';
+
+        teams.forEach(team => {
+          grid.appendChild(createTeamCard(team, rankColors));
+        });
+
+        section.appendChild(grid);
+        return section;
       }
 
-      // Initial pad assuming 3 columns, then refine on next frame
-      (function initialPad(){
-        const totalCards = grid.querySelectorAll('article').length;
-        const cols = 3;
-        const remainder = totalCards % cols;
-        const needed = remainder === 0 ? 0 : (cols - remainder);
-        for(let i=0;i<needed;i++) grid.appendChild(createPlaceholderCard());
-      })();
-      requestAnimationFrame(padPlaceholders);
-      let resizeTimeout;
-      window.addEventListener('resize', ()=>{
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(padPlaceholders, 100);
-      }, { passive: true });
+      function applyEventWinners(eventWinners, teamsByName) {
+        const section = document.createElement('section');
+        section.className = 'mb-8';
+        const h = document.createElement('h2');
+        h.className = 'text-lg font-semibold mb-3';
+        h.textContent = 'Event Winners';
+        section.appendChild(h);
 
-      return section;
-    }
+        const grid = document.createElement('div');
+        grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-4';
 
-    function applyAllEvents(pastEvents, upcomingEvents){
-      const section = document.createElement('section');
-      section.className = 'mb-12';
-      const h = document.createElement('h2');
-      h.className = 'text-lg font-semibold mb-3';
-      h.textContent = 'Past and Upcoming Events';
-      section.appendChild(h);
+        (eventWinners || []).forEach(ev => {
+          const card = document.createElement('article');
+          card.className = 'bg-white shadow rounded-lg p-4';
+          const title = document.createElement('h3');
+          title.className = 'text-lg font-bold text-gray-900 mb-2 pb-1 border-b border-gray-200';
+          title.textContent = ev.name;
+          card.appendChild(title);
 
-      const tableWrap = document.createElement('div');
-      tableWrap.className = 'bg-white shadow rounded-lg overflow-auto';
+          // Date line (small, muted)
+          // const dateEl = document.createElement('div');
+          // dateEl.className = 'text-xs text-gray-500 mb-2';
+          // dateEl.textContent = ev.date || 'Missing';
+          // card.appendChild(dateEl);
 
-      const table = document.createElement('table');
-      table.className = 'min-w-full table-auto';
-      table.setAttribute('role','table');
+          // First winner team color
+          const firstPlace = (ev.placements || []).find(p => p.pos === 1);
+          if (firstPlace) {
+            const team = teamsByName[firstPlace.team];
+            card.style.border = `0.1px double ${team?.color || '#000000'}`;
+          }
 
-      const thead = document.createElement('thead');
-      thead.className = 'bg-gray-100';
-      thead.innerHTML = '<tr><th class="text-left p-3">Event</th><th class="p-3">1st</th><th class="p-3">2nd</th><th class="p-3">3rd</th></tr>';
-      table.appendChild(thead);
+          const list = document.createElement('ol');
+          list.className = 'list-decimal list-inside space-y-1';
+          (ev.placements || []).sort((a, b) => a.pos - b.pos).forEach(place => {
+            const li = document.createElement('li');
+            li.className = 'flex justify-between';
 
-      const tbody = document.createElement('tbody');
+            const teamSpan = document.createElement('span');
+            const team = teamsByName[place.team];
 
-      upcomingEvents.forEach(ev=>{
-        const tr = document.createElement('tr');
-        tr.className = 'border-t';
-        const nameTd = document.createElement('td');
-        nameTd.className = 'p-3';
-        const nameWrap = document.createElement('div');
-        const nameEl = document.createElement('div');
-        nameEl.className = 'font-medium';
-        nameEl.textContent = ev.name;
-        nameWrap.appendChild(nameEl);
-        const dateEl = document.createElement('div');
-        dateEl.className = 'text-xs text-gray-500';
-        dateEl.textContent = ev.date || 'Missing';
-        nameWrap.appendChild(dateEl);
-        nameTd.appendChild(nameWrap);
-        tr.appendChild(nameTd);
+            const fontColor = firstPlace === place ? team?.color || '#888888' : '#888888';
 
-        const positions = (ev.positions || []).sort((a,b)=>a.pos-b.pos);
-        for(let i=0;i<3;i++){
-          const pos = positions[i] || {pos: i+1, points: 0};
-          const td = document.createElement('td');
-          td.className = 'p-3 text-center';
-          const label = (pos.pos===1?'1st':pos.pos===2?'2nd':pos.pos+'th');
-          td.textContent = `${label} · ${pos.points} pts`;
-          if(i===0) td.classList.add('font-semibold');
-          tr.appendChild(td);
-        }
+            teamSpan.textContent = place.team;
+            teamSpan.style.color = fontColor;
+            const pts = document.createElement('span');
+            pts.className = 'text-sm text-gray-500';
+            pts.textContent = place.points + ' pts';
+            pts.style.color = fontColor;
+            li.appendChild(teamSpan);
+            li.appendChild(pts);
+            list.appendChild(li);
+          });
 
-        tbody.appendChild(tr);
-      });
-
-      pastEvents.forEach(ev=>{
-        const tr = document.createElement('tr');
-        tr.className = 'border-t bg-gray-50';
-        const nameTd = document.createElement('td');
-        nameTd.className = 'p-3';
-        const nameWrap = document.createElement('div');
-        const nameEl = document.createElement('div');
-        nameEl.className = 'font-medium';
-        nameEl.textContent = ev.name;
-        nameWrap.appendChild(nameEl);
-        const dateEl = document.createElement('div');
-        dateEl.className = 'text-xs text-gray-500';
-        dateEl.textContent = ev.date || 'Missing';
-        nameWrap.appendChild(dateEl);
-        nameTd.appendChild(nameWrap);
-        tr.appendChild(nameTd);
-
-        const positions = (ev.placements || []).sort((a,b)=>a.pos-b.pos);
-        for(let i=0;i<3;i++){
-          const pos = positions[i] || {pos: i+1, points: 0};
-          const td = document.createElement('td');
-          td.className = 'p-3 text-center';
-          const label = (pos.pos===1?'1st':pos.pos===2?'2nd':pos.pos+'th');
-          td.textContent = `${label} · ${pos.points} pts`;
-          if(i===0) td.classList.add('font-semibold');
-          tr.appendChild(td);
-        }
-
-        tbody.appendChild(tr);
-      });
-
-      table.appendChild(tbody);
-      tableWrap.appendChild(table);
-      section.appendChild(tableWrap);
-      return section;
-    }
-
-    function showError(message){
-      const app = qs('app');
-      app.innerHTML = '';
-      const err = document.createElement('div');
-      err.className = 'bg-red-50 border border-red-200 text-red-800 p-4 rounded';
-      err.textContent = message;
-      app.appendChild(err);
-    }
-
-    // fetch and render
-    fetch('./data.json', {cache: 'no-store'}).then(r=>{
-      if(!r.ok) throw new Error('Failed to load data.json: '+r.status);
-      return r.json();
-    }).then(data=>{
-      const app = qs('app');
-      const loading = qs('loading');
-      loading?.remove();
-      app.innerHTML = '';
-
-      const teamsSource = data.teams || [];
-      const pastEvents = data.pastEvents || [];
-      const upcomingEvents = data.upcoming || [];
-      const rankColors = data.rankColors || {};
-
-      // build totals (respecting provided totals if present)
-      const totals = {};
-      (pastEvents || []).forEach(ev=>{
-        (ev.placements || []).forEach(p=>{
-          totals[p.team] = (totals[p.team] || 0) + (p.points || 0);
+          card.appendChild(list);
+          grid.appendChild(card);
         });
+
+        // Append grid
+        section.appendChild(grid);
+
+        // Placeholder skeletons to fill rows
+        function createPlaceholderCard() {
+          const ph = document.createElement('article');
+          ph.className = 'bg-white shadow rounded-lg p-4';
+          ph.setAttribute('aria-hidden', 'true');
+          ph.dataset.placeholder = 'true';
+          const bar1 = document.createElement('div');
+          bar1.className = 'h-5 bg-gray-200 rounded w-2/3 mb-3';
+          ph.appendChild(bar1);
+          const barDate = document.createElement('div');
+          barDate.className = 'h-3 bg-gray-200 rounded w-24 mb-3';
+          ph.appendChild(barDate);
+          for (let i = 0; i < 3; i++) {
+            const line = document.createElement('div');
+            line.className = 'h-4 bg-gray-200 rounded w-full mb-2';
+            ph.appendChild(line);
+          }
+          return ph;
+        }
+
+        function padPlaceholders() {
+          const totalCards = grid.querySelectorAll('article:not([data-placeholder="true"])').length;
+          grid.querySelectorAll('article[data-placeholder="true"]').forEach(n => n.remove());
+          let cols = 3;
+          try {
+            const comp = getComputedStyle(grid);
+            const tpl = comp.gridTemplateColumns || '';
+            const parts = tpl.trim().split(/\s+/).filter(Boolean);
+            if (parts.length > 0) { cols = parts.length; }
+          } catch (e) { }
+          cols = Math.max(1, cols);
+          const remainder = totalCards % cols;
+          const needed = remainder === 0 ? 0 : (cols - remainder);
+          for (let i = 0; i < needed; i++) grid.appendChild(createPlaceholderCard());
+        }
+
+        // Initial pad assuming 3 columns, then refine on next frame
+        (function initialPad() {
+          const totalCards = grid.querySelectorAll('article').length;
+          const cols = 3;
+          const remainder = totalCards % cols;
+          const needed = remainder === 0 ? 0 : (cols - remainder);
+          for (let i = 0; i < needed; i++) grid.appendChild(createPlaceholderCard());
+        })();
+        requestAnimationFrame(padPlaceholders);
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(padPlaceholders, 100);
+        }, { passive: true });
+
+        return section;
+      }
+
+      function applyAllEvents(pastEvents, upcomingEvents) {
+        const section = document.createElement('section');
+        section.className = 'mb-12';
+        const h = document.createElement('h2');
+        h.className = 'text-lg font-semibold mb-3';
+        h.textContent = 'Past and Upcoming Events';
+        section.appendChild(h);
+
+        const tableWrap = document.createElement('div');
+        tableWrap.className = 'bg-white shadow rounded-lg overflow-auto';
+
+        const table = document.createElement('table');
+        table.className = 'min-w-full table-auto';
+        table.setAttribute('role', 'table');
+
+        const thead = document.createElement('thead');
+        thead.className = 'bg-gray-100';
+        thead.innerHTML = '<tr><th class="text-left p-3">Event</th><th class="p-3">1st</th><th class="p-3">2nd</th><th class="p-3">3rd</th></tr>';
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+
+        upcomingEvents.forEach(ev => {
+          const tr = document.createElement('tr');
+          tr.className = 'border-t';
+          const nameTd = document.createElement('td');
+          nameTd.className = 'p-3';
+          const nameWrap = document.createElement('div');
+          const nameEl = document.createElement('div');
+          nameEl.className = 'font-medium';
+          nameEl.textContent = ev.name;
+          nameWrap.appendChild(nameEl);
+          const dateEl = document.createElement('div');
+          dateEl.className = 'text-xs text-gray-500';
+          dateEl.textContent = ev.date || 'Missing';
+          nameWrap.appendChild(dateEl);
+          nameTd.appendChild(nameWrap);
+          tr.appendChild(nameTd);
+
+          const positions = (ev.positions || []).sort((a, b) => a.pos - b.pos);
+          for (let i = 0; i < 3; i++) {
+            const pos = positions[i] || { pos: i + 1, points: 0 };
+            const td = document.createElement('td');
+            td.className = 'p-3 text-center';
+            const label = (pos.pos === 1 ? '1st' : pos.pos === 2 ? '2nd' : pos.pos + 'th');
+            td.textContent = `${label} · ${pos.points} pts`;
+            if (i === 0) td.classList.add('font-semibold');
+            tr.appendChild(td);
+          }
+
+          tbody.appendChild(tr);
+        });
+
+        pastEvents.forEach(ev => {
+          const tr = document.createElement('tr');
+          tr.className = 'border-t bg-gray-50';
+          const nameTd = document.createElement('td');
+          nameTd.className = 'p-3';
+          const nameWrap = document.createElement('div');
+          const nameEl = document.createElement('div');
+          nameEl.className = 'font-medium';
+          nameEl.textContent = ev.name;
+          nameWrap.appendChild(nameEl);
+          const dateEl = document.createElement('div');
+          dateEl.className = 'text-xs text-gray-500';
+          dateEl.textContent = ev.date || 'Missing';
+          nameWrap.appendChild(dateEl);
+          nameTd.appendChild(nameWrap);
+          tr.appendChild(nameTd);
+
+          const positions = (ev.placements || []).sort((a, b) => a.pos - b.pos);
+          for (let i = 0; i < 3; i++) {
+            const pos = positions[i] || { pos: i + 1, points: 0 };
+            const td = document.createElement('td');
+            td.className = 'p-3 text-center';
+            const label = (pos.pos === 1 ? '1st' : pos.pos === 2 ? '2nd' : pos.pos + 'th');
+            td.textContent = `${label} · ${pos.points} pts`;
+            if (i === 0) td.classList.add('font-semibold');
+            tr.appendChild(td);
+          }
+
+          tbody.appendChild(tr);
+        });
+
+        table.appendChild(tbody);
+        tableWrap.appendChild(table);
+        section.appendChild(tableWrap);
+        return section;
+      }
+
+      function showError(message) {
+        const app = qs('app');
+        app.innerHTML = '';
+        const err = document.createElement('div');
+        err.className = 'bg-red-50 border border-red-200 text-red-800 p-4 rounded';
+        err.textContent = message;
+        app.appendChild(err);
+      }
+
+      // fetch and render
+      fetch('./data.json', { cache: 'no-store' }).then(r => {
+        if (!r.ok) throw new Error('Failed to load data.json: ' + r.status);
+        return r.json();
+      }).then(data => {
+        const app = qs('app');
+        const loading = qs('loading');
+        loading?.remove();
+        app.innerHTML = '';
+
+        const teamsSource = data.teams || [];
+        const pastEvents = data.pastEvents || [];
+        const upcomingEvents = data.upcoming || [];
+        const rankColors = data.rankColors || {};
+
+        // build totals (respecting provided totals if present)
+        const totals = {};
+        (pastEvents || []).forEach(ev => {
+          (ev.placements || []).forEach(p => {
+            totals[p.team] = (totals[p.team] || 0) + (p.points || 0);
+          });
+        });
+        teamsSource.forEach(t => {
+          totals[t.name] = Math.max(totals[t.name] || 0, t.total || 0);
+        });
+
+        const teams = teamsSource.map(t => ({
+          name: t.name,
+          color: t.color,
+          total: totals[t.name] || 0
+        }));
+
+        teams.sort((a, b) => b.total - a.total);
+        teams.forEach((t, i) => t.rank = i + 1);
+
+        const teamsByName = {};
+        teams.forEach(t => teamsByName[t.name] = t);
+
+        // header top team
+        const top = teams[0] || { name: '—', color: '#111827', rank: 1, total: 0 };
+        const headerCard = buildHeaderTop(top);
+        const headerSlot = qs('top-scorecard');
+        headerSlot.innerHTML = '';
+        headerSlot.appendChild(headerCard);
+
+        app.appendChild(applyTeamTotals(teams, rankColors));
+        app.appendChild(applyEventWinners(pastEvents, teamsByName));
+        app.appendChild(applyAllEvents(pastEvents, upcomingEvents));
+      }).catch(err => {
+        console.error(err);
+        showError('Could not load scoreboard data.');
       });
-      teamsSource.forEach(t=>{
-        totals[t.name] = Math.max(totals[t.name] || 0, t.total || 0);
-      });
 
-      const teams = teamsSource.map(t=>({
-        name: t.name,
-        color: t.color,
-        total: totals[t.name] || 0
-      }));
-
-      teams.sort((a,b)=>b.total - a.total);
-      teams.forEach((t,i)=> t.rank = i+1);
-
-      const teamsByName = {};
-      teams.forEach(t=>teamsByName[t.name] = t);
-
-      // header top team
-      const top = teams[0] || {name:'—', color:'#111827', rank:1, total:0};
-      const headerCard = buildHeaderTop(top);
-      const headerSlot = qs('top-scorecard');
-      headerSlot.innerHTML = '';
-      headerSlot.appendChild(headerCard);
-
-      app.appendChild(applyTeamTotals(teams, rankColors));
-      app.appendChild(applyEventWinners(pastEvents, teamsByName));
-      app.appendChild(applyAllEvents(pastEvents, upcomingEvents));
-    }).catch(err=>{
-      console.error(err);
-      showError('Could not load scoreboard data.');
-    });
-
-  })();
+    })();
   </script>
 </body>
+
 </html>
