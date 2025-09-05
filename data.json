@@ -53,24 +53,6 @@
         { "pos": 2, "team": "Starloads", "points": 840 },
         { "pos": 3, "team": "The Firebolts", "points": 560 }
       ]
-    },
-    {
-      "name": "8 Ball Pool (Singles)",
-      "date": "2025-09-06",
-      "placements": [
-        { "pos": 1, "team": "", "points": 1400 },
-        { "pos": 2, "team": "", "points": 840 },
-        { "pos": 3, "team": "", "points": 560 }
-      ]
-    },
-    {
-      "name": "8 Ball Pool (Doubles)",
-      "date": "2025-09-06",
-      "placements": [
-        { "pos": 1, "team": "", "points": 1400 },
-        { "pos": 2, "team": "", "points": 840 },
-        { "pos": 3, "team": "", "points": 560 }
-      ]
     }
   ],
   
