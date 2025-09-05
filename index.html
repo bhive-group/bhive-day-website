@@ -171,17 +171,17 @@
       section.className = 'mb-8';
       const h = document.createElement('h2');
       h.className = 'text-lg font-semibold mb-3';
-      h.textContent = 'Past Events';
+      h.textContent = 'Event Winners';
       section.appendChild(h);
 
       const grid = document.createElement('div');
-      grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
+      grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-4';
 
       (pastEvents || []).forEach(ev=>{
         const card = document.createElement('article');
         card.className = 'bg-white shadow rounded-lg p-4';
         const title = document.createElement('h3');
-        title.className = 'font-semibold mb-2';
+        title.className = 'text-lg font-bold text-gray-900 mb-3 pb-1 border-b border-gray-200';
         title.textContent = ev.name;
         card.appendChild(title);
 
@@ -211,12 +211,12 @@
       return section;
     }
 
-    function applyUpcoming(upcoming){
+    function applyAllEvents(pastEvents, upcomingEvents){
       const section = document.createElement('section');
       section.className = 'mb-12';
       const h = document.createElement('h2');
       h.className = 'text-lg font-semibold mb-3';
-      h.textContent = 'Upcoming Events';
+      h.textContent = 'Past and Upcoming Events';
       section.appendChild(h);
 
       const tableWrap = document.createElement('div');
@@ -233,7 +233,7 @@
 
       const tbody = document.createElement('tbody');
 
-      (upcoming || []).forEach(ev=>{
+      upcomingEvents.forEach(ev=>{
         const tr = document.createElement('tr');
         tr.className = 'border-t';
         const nameTd = document.createElement('td');
@@ -242,6 +242,28 @@
         tr.appendChild(nameTd);
 
         const positions = (ev.positions || []).sort((a,b)=>a.pos-b.pos);
+        for(let i=0;i<3;i++){
+          const pos = positions[i] || {pos: i+1, points: 0};
+          const td = document.createElement('td');
+          td.className = 'p-3 text-center';
+          const label = (pos.pos===1?'1st':pos.pos===2?'2nd':pos.pos+'th');
+          td.textContent = `${label} — ${pos.points} pts`;
+          if(i===0) td.classList.add('font-semibold');
+          tr.appendChild(td);
+        }
+
+        tbody.appendChild(tr);
+      });
+
+      pastEvents.forEach(ev=>{
+        const tr = document.createElement('tr');
+        tr.className = 'border-t bg-gray-50';
+        const nameTd = document.createElement('td');
+        nameTd.className = 'p-3';
+        nameTd.textContent = ev.name;
+        tr.appendChild(nameTd);
+
+        const positions = (ev.placements || []).sort((a,b)=>a.pos-b.pos);
         for(let i=0;i<3;i++){
           const pos = positions[i] || {pos: i+1, points: 0};
           const td = document.createElement('td');
@@ -282,6 +304,7 @@
 
       const teamsSource = data.teams || [];
       const pastEvents = data.pastEvents || [];
+      const upcomingEvents = data.upcoming || [];
       const rankColors = data.rankColors || {};
 
       // build totals (respecting provided totals if present)
@@ -316,7 +339,7 @@
 
       app.appendChild(applyTeamTotals(teams, rankColors));
       app.appendChild(applyPastEvents(pastEvents, teamsByName));
-      app.appendChild(applyUpcoming(data.upcoming || []));
+      app.appendChild(applyAllEvents(pastEvents, upcomingEvents));
     }).catch(err=>{
       console.error(err);
       showError('Could not load scoreboard data.');

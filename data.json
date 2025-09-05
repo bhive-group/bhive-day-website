@@ -33,6 +33,22 @@
         { "pos": 2, "team": "The Firebolts", "points": 600 },
         { "pos": 3, "team": "Illuminati", "points": 400 }
       ]
+    },
+    {
+      "name": "Name the Logo",
+      "placements": [
+        { "pos": 1, "team": "Starloads", "points": 1400 },
+        { "pos": 2, "team": "The Firebolts", "points": 840 },
+        { "pos": 3, "team": "Illuminati", "points": 560 }
+      ]
+    },
+    {
+      "name": "Dart",
+      "placements": [
+        { "pos": 1, "team": "Thunder Bees", "points": 1400 },
+        { "pos": 2, "team": "Illuminati", "points": 840 },
+        { "pos": 3, "team": "Starloads", "points": 560 }
+      ]
     }
   ],
   "upcoming": [
