@@ -1,0 +1,70 @@
+{
+  "teams": [
+    {
+      "name": "Starloads",
+      "color": "#4f46e5",
+      "total": 1840,
+      "rank": 1
+    },
+    {
+      "name": "Illuminati",
+      "color": "#10b981",
+      "total": 1800,
+      "rank": 2
+    },
+    {
+      "name": "The Firebolts",
+      "color": "#f59e0b",
+      "total": 1160,
+      "rank": 3
+    },
+    {
+      "name": "Thunder Bees",
+      "color": "#fb7185",
+      "total": 0,
+      "rank": 4
+    }
+  ],
+  "pastEvents": [
+    {
+      "name": "Rangoli",
+      "placements": [
+        { "pos": 1, "team": "Illuminati", "points": 1400 },
+        { "pos": 2, "team": "Starloads", "points": 840 },
+        { "pos": 3, "team": "The Firebolts", "points": 560 }
+      ]
+    },
+    {
+      "name": "Lemon & Spoon",
+      "placements": [
+        { "pos": 1, "team": "Starloads", "points": 1000 },
+        { "pos": 2, "team": "The Firebolts", "points": 600 },
+        { "pos": 3, "team": "Illuminati", "points": 400 }
+      ]
+    }
+  ],
+  "upcoming": [
+    {
+      "name": "Field Cricket (Draft)",
+      "positions": [
+        { "pos": 1, "points": 9200 },
+        { "pos": 2, "points": 5520 },
+        { "pos": 3, "points": 3680 }
+      ]
+    },
+    {
+      "name": "Badminton (Draft)",
+      "positions": [
+        { "pos": 1, "points": 5400 },
+        { "pos": 2, "points": 3240 },
+        { "pos": 3, "points": 2160 }
+      ]
+    }
+  ],
+  "rankColors": {
+    "1": "#f59e0b",
+    "2": "#9ca3af",
+    "3": "#fb923c",
+    "4": "#64748b"
+  }
+}
