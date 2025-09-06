@@ -1,94 +1,174 @@
 {
-  "teams": [
-    {
-      "name": "Starlords",
-      "color": "#4f46e5"
-    },
-    {
-      "name": "Illuminati",
-      "color": "#10b981"
-    },
-    {
-      "name": "Firebolts",
-      "color": "#f59e0b"
-    },
-    {
-      "name": "Thunderbees",
-      "color": "#fb7185"
-    }
-  ],
-  "pastEvents": [
+    "teams": [
         {
-      "name": "8 Ball Pool (Singles)",
-      "date": "2025-09-06",
-      "placements": [
-        { "pos": 1, "team": "Starlords", "points": 1500 },
-        { "pos": 2, "team": "Thunderbees", "points": 900 },
-        { "pos": 3, "team": "Illuminati", "points": 600 }
-      ]
-    },
-    {
-      "name": "Lemon & Spoon",
-      "date": "2025-09-05",
-      "placements": [
-        { "pos": 1, "team": "Starlords", "points": 1000 },
-        { "pos": 2, "team": "Firebolts", "points": 600 },
-        { "pos": 3, "team": "Illuminati", "points": 400 }
-      ]
-    },
-    {
-      "name": "Name the Logo & Tagline",
-      "date": "2025-09-05",
-      "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 1400 },
-        { "pos": 2, "team": "Firebolts", "points": 840 },
-        { "pos": 3, "team": "Illuminati", "points": 560 }
-      ]
-    },
-    {
-      "name": "Dart",
-      "date": "2025-09-05",
-      "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 1400 },
-        { "pos": 2, "team": "Starlords", "points": 840 },
-        { "pos": 3, "team": "Illuminati", "points": 560 }
-      ]
-    },
-    {
-      "name": "Rangoli",
-      "date": "2025-08-26",
-      "placements": [
-        { "pos": 1, "team": "Illuminati", "points": 1400 },
-        { "pos": 2, "team": "Starlords", "points": 840 },
-        { "pos": 3, "team": "Firebolts", "points": 560 }
-      ]
+            "name": "Starlords",
+            "color": "#4f46e5"
+        },
+        {
+            "name": "Illuminati",
+            "color": "#10b981"
+        },
+        {
+            "name": "Firebolts",
+            "color": "#f59e0b"
+        },
+        {
+            "name": "Thunderbees",
+            "color": "#fb7185"
+        }
+    ],
+    "pastEvents": [
+        {
+            "name": "8 Ball Pool (Doubles)",
+            "date": "2025-09-06",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Illuminati",
+                    "points": 1500
+                },
+                {
+                    "pos": 2,
+                    "team": "Thunderbees",
+                    "points": 900
+                },
+                {
+                    "pos": 3,
+                    "team": "Firebolts",
+                    "points": 600
+                }
+            ]
+        },
+        {
+            "name": "8 Ball Pool (Singles)",
+            "date": "2025-09-06",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Starlords",
+                    "points": 1500
+                },
+                {
+                    "pos": 2,
+                    "team": "Thunderbees",
+                    "points": 900
+                },
+                {
+                    "pos": 3,
+                    "team": "Illuminati",
+                    "points": 600
+                }
+            ]
+        },
+        {
+            "name": "Lemon & Spoon",
+            "date": "2025-09-05",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Starlords",
+                    "points": 1000
+                },
+                {
+                    "pos": 2,
+                    "team": "Firebolts",
+                    "points": 600
+                },
+                {
+                    "pos": 3,
+                    "team": "Illuminati",
+                    "points": 400
+                }
+            ]
+        },
+        {
+            "name": "Name the Logo & Tagline",
+            "date": "2025-09-05",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Thunderbees",
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "team": "Firebolts",
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "team": "Illuminati",
+                    "points": 560
+                }
+            ]
+        },
+        {
+            "name": "Dart",
+            "date": "2025-09-05",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Thunderbees",
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "team": "Starlords",
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "team": "Illuminati",
+                    "points": 560
+                }
+            ]
+        },
+        {
+            "name": "Rangoli",
+            "date": "2025-08-26",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Illuminati",
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "team": "Starlords",
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "team": "Firebolts",
+                    "points": 560
+                }
+            ]
+        }
+    ],
+    "upcoming": [
+        {
+            "name": "Field Cricket (Sample Draft)",
+            "date": "1970-01-01",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 9200
+                },
+                {
+                    "pos": 2,
+                    "points": 5520
+                },
+                {
+                    "pos": 3,
+                    "points": 3680
+                }
+            ]
+        }
+    ],
+    "rankColors": {
+        "1": "#f57c00",
+        "2": "#8B4E2F",
+        "3": "#6e6e6e",
+        "4": "#bdbdbd"
     }
-  ],
-  
-  "upcoming": [
-    {
-      "name": "8 Ball Pool (Doubles)",
-      "date": "2025-09-06",
-      "positions": [
-        { "pos": 1, "points": 1500 },
-        { "pos": 2, "points": 900 },
-        { "pos": 3, "points": 600 }
-      ]
-    },
-    {
-      "name": "Field Cricket (Sample Draft)",
-      "date": "1970-01-01",
-      "positions": [
-        { "pos": 1, "points": 9200 },
-        { "pos": 2, "points": 5520 },
-        { "pos": 3, "points": 3680 }
-      ]
-    }
-  ],
-  "rankColors": {
-    "1": "#f57c00",
-    "2": "#8B4E2F",
-    "3": "#6e6e6e",
-    "4": "#bdbdbd"
-  }
 }
