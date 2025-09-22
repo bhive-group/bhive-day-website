@@ -19,6 +19,27 @@
     ],
     "pastEvents": [
         {
+            "name": "Extempore",
+            "date": "2025-09-19",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Starlords",
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "team": "Firebolts",
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "team": "Starlords",
+                    "points": 560
+                }
+            ]
+        },
+        {
             "name": "Foosball",
             "date": "2025-09-12",
             "placements": [
@@ -166,24 +187,6 @@
         }
     ],
     "upcoming": [
-                {
-            "name": "Extempore",
-            "date": "2025-09-12",
-            "positions": [
-                {
-                    "pos": 1,
-                    "points": 1400
-                },
-                {
-                    "pos": 2,
-                    "points": 840
-                },
-                {
-                    "pos": 3,
-                    "points": 560
-                }
-            ]
-        },
         {
             "name": "Field Cricket (Sample Draft)",
             "date": "1970-01-01",
