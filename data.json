@@ -188,6 +188,24 @@
     ],
     "upcoming": [
         {
+            "name": "Chess",
+            "date": "2025-11-05",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "points": 560
+                }
+            ]
+        },
+        {
             "name": "Field Cricket (Sample Draft)",
             "date": "1970-01-01",
             "positions": [
