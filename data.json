@@ -273,8 +273,44 @@
     ],
     "upcoming": [
         {
+            "name": "Pickleball (Doubles) (Pending)",
+            "date": "2025-12-06",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 2400
+                },
+                {
+                    "pos": 2,
+                    "points": 1440
+                },
+                {
+                    "pos": 3,
+                    "points": 960
+                }
+            ]
+        },
+        {
+            "name": "Pickleball (Singles) (Pending)",
+            "date": "2025-12-06",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 2400
+                },
+                {
+                    "pos": 2,
+                    "points": 1440
+                },
+                {
+                    "pos": 3,
+                    "points": 960
+                }
+            ]
+        },
+        {
             "name": "Ironman 70.3 (Pending){Anikethan, Melvin, Shesh}",
-            "date": "1970-01-01",
+            "date": "2025-11-09",
             "positions": [
                 {
                     "pos": 1,
@@ -292,7 +328,7 @@
         },
         {
             "name": "Ironman 70.3 Partial (Pending){Sandeep, Ravindra and Rithick}",
-            "date": "1970-01-01",
+            "date": "2025-11-09",
             "positions": [
                 {
                     "pos": 1,
