@@ -40,7 +40,7 @@
             ]
         },
         {
-            "name": "Carrom (Doubles)",
+            "name": "Carrom (Open Doubles)",
             "date": "2025-11-14",
             "placements": [
                 {
@@ -61,7 +61,7 @@
             ]
         },
         {
-            "name": "Carrom (Singles)",
+            "name": "Carrom (Open Singles)",
             "date": "2025-11-14",
             "placements": [
                 {
@@ -145,7 +145,7 @@
             ]
         },
         {
-            "name": "8 Ball Pool (Doubles)",
+            "name": "8 Ball Pool (Open Doubles)",
             "date": "2025-09-06",
             "placements": [
                 {
@@ -166,7 +166,7 @@
             ]
         },
         {
-            "name": "8 Ball Pool (Singles)",
+            "name": "8 Ball Pool (Open Singles)",
             "date": "2025-09-06",
             "placements": [
                 {
@@ -273,38 +273,74 @@
     ],
     "upcoming": [
         {
-            "name": "Pickleball (Doubles) (Pending)",
+            "name": "Pickleball (Women's Doubles)",
             "date": "2025-12-06",
             "positions": [
                 {
                     "pos": 1,
-                    "points": 2400
+                    "points": 1400
                 },
                 {
                     "pos": 2,
-                    "points": 1440
+                    "points": 840
                 },
                 {
                     "pos": 3,
-                    "points": 960
+                    "points": 560
                 }
             ]
         },
         {
-            "name": "Pickleball (Singles) (Pending)",
+            "name": "Pickleball (Women's Singles)",
             "date": "2025-12-06",
             "positions": [
                 {
                     "pos": 1,
-                    "points": 2400
+                    "points": 1400
                 },
                 {
                     "pos": 2,
-                    "points": 1440
+                    "points": 840
                 },
                 {
                     "pos": 3,
-                    "points": 960
+                    "points": 560
+                }
+            ]
+        },
+        {
+            "name": "Pickleball (Men's Doubles)",
+            "date": "2025-12-06",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "points": 560
+                }
+            ]
+        },
+        {
+            "name": "Pickleball (Men's Singles)",
+            "date": "2025-12-06",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "points": 560
                 }
             ]
         },
