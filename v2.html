@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BHIVE Day 2025</title>
+
+    <!-- Fonts: Outfit for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: '#FFD700',
+                        silver: '#C0C0C0',
+                        bronze: '#CD7F32',
+                        slate: {
+                            850: '#1e293b', // Custom dark
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Analytics (Copied from v1) -->
+    <script type="text/javascript">
+            (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "ufpnhrqsmd");
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HYMBHTM8QL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HYMBHTM8QL');
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .delay-100 {
+            animation-delay: 1s;
+        }
+
+        .delay-200 {
+            animation-delay: 2s;
+        }
+
+        .delay-300 {
+            animation-delay: 3s;
+        }
+
+        /* Podium Heights */
+        .podium-1 {
+            height: 320px;
+        }
+
+        .podium-2 {
+            height: 260px;
+        }
+
+        .podium-3 {
+            height: 200px;
+        }
+
+        .podium-4 {
+            height: 160px;
+        }
+
+        @media (max-width: 768px) {
+
+            .podium-1,
+            .podium-2,
+            .podium-3,
+            .podium-4 {
+                height: auto;
+                min-height: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-white font-sans antialiased bg-hero-pattern min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <h1
+                        class="font-display font-black text-2xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+                        BHIVE<span class="text-amber-500">DAY</span>
+                    </h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#podium"
+                            class="hover:text-amber-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Standings</a>
+                        <a href="#events"
+                            class="hover:text-amber-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Events</a>
+                        <a href="index.html"
+                            class="px-3 py-2 rounded-md text-sm font-bold text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors">Back
+                            to v1</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden">
+        <!-- Background Glow -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-amber-500/20 rounded-full blur-[120px] -z-10">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-fade-in-up">
+                <span class="relative flex h-3 w-3">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <span class="text-sm font-medium text-green-300 tracking-wide uppercase">Live Scoreboard</span>
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-display font-black tracking-tighter mb-6 leading-tight">
+                <span class="block text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">BHIVE
+                    DAY</span>
+                <span class="block text-amber-500">2025</span>
+            </h1>
+
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400 font-light">
+                Witness the ultimate showdown. Four teams, four leaders, one trophy.
+            </p>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- Podium Section -->
+        <section id="podium" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Leaderboard</h2>
+                    <div class="h-1 w-20 bg-amber-500 mx-auto rounded-full"></div>
+                </div>
+
+                <!-- Podium Container -->
+                <div id="podium-container"
+                    class="flex flex-col md:flex-row items-end justify-center gap-4 md:gap-6 min-h-[400px]">
+                    <!-- Injected via JS -->
+                    <div class="text-slate-500 animate-pulse">Loading standings...</div>
+                </div>
+
+                <!-- Remaining Teams Grid (if any) -->
+                <div id="other-teams-grid" class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"></div>
+            </div>
+        </section>
+
+        <!-- Events Timeline -->
+        <section id="events" class="py-20 bg-slate-900/50">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
+                    <h2 class="text-3xl font-display font-bold text-white">Events Tracker</h2>
+
+                    <!-- Tabs -->
+                    <div class="flex p-1 bg-slate-900 rounded-xl border border-slate-800">
+                        <button onclick="filterEvents('all')" id="tab-all"
+                            class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-slate-800 text-white shadow-sm">All</button>
+                        <button onclick="filterEvents('completed')" id="tab-completed"
+                            class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white">Completed</button>
+                        <button onclick="filterEvents('upcoming')" id="tab-upcoming"
+                            class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white">Upcoming</button>
+                    </div>
+                </div>
+
+                <div id="events-container" class="space-y-6 relative">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-slate-800"></div>
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </section>
+        </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 py-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-500 font-display font-medium">BHIVE DAY 2025</p>
+            <p class="text-slate-600 text-sm mt-2">May the best team win.</p>
+        </div>
+    </footer>
+
+    <!-- Team Details Modal -->
+    <div id="team-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop">
+        </div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <!-- Modal Panel -->
+                <div class="relative transform overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    id="modal-panel">
+
+                    <div class="absolute right-0 top-0 pr-4 pt-4 z-10">
+                        <button type="button"
+                            class="rounded-md bg-slate-900 text-slate-400 hover:text-white focus:outline-none"
+                            onclick="closeModal()">
+                            <span class="sr-only">Close</span>
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div id="modal-team-color" class="w-12 h-12 rounded-xl shadow-lg shadow-amber-500/20"></div>
+                            <div>
+                                <h3 class="text-2xl font-display font-bold text-white" id="modal-title">Team Name</h3>
+                                <p class="text-slate-400 text-sm" id="modal-rank">Rank #1</p>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <div class="text-3xl font-display font-black text-white" id="modal-total">0</div>
+                                <div class="text-xs text-slate-500 uppercase tracking-wider">Points</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 max-h-[60vh] overflow-y-auto custom-scrollbar pr-2">
+                            <table class="min-w-full divide-y divide-slate-800">
+                                <thead class="bg-slate-950/50 sticky top-0">
+                                    <tr>
+                                        <th scope="col"
+                                            class="py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                                            Event</th>
+                                        <th scope="col"
+                                            class="py-3 text-center text-xs font-medium text-slate-400 uppercase tracking-wider">
+                                            Rank</th>
+                                        <th scope="col"
+                                            class="py-3 text-right text-xs font-medium text-slate-400 uppercase tracking-wider">
+                                            Pts</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-800" id="modal-body">
+                                    <!-- Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Logic ---
+        const qs = (s) => document.querySelector(s);
+        const qsa = (s) => document.querySelectorAll(s);
+
+        // Color Helpers
+        function hexToRgb(hex) {
+            if (!hex) return [0, 0, 0];
+            const h = hex.replace('#', '');
+            const full = h.length === 3 ? h.split('').map(s => s + s).join('') : h;
+            const bigint = parseInt(full, 16);
+            return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
+        }
+
+        // Modal Logic
+        const modal = qs('#team-modal');
+        const backdrop = qs('#modal-backdrop');
+        const panel = qs('#modal-panel');
+
+        function openModal(teamName, teamData, events) {
+            // Populate Data
+            qs('#modal-title').textContent = teamName;
+            qs('#modal-title').style.color = teamData.color;
+            qs('#modal-team-color').style.backgroundColor = teamData.color;
+            qs('#modal-team-color').style.boxShadow = `0 0 20px ${teamData.color}40`; // 25% opacity glow
+            qs('#modal-rank').textContent = `Rank #${teamData.rank}`;
+            qs('#modal-total').textContent = teamData.total;
+
+            const tbody = qs('#modal-body');
+            tbody.innerHTML = '';
+
+            // Gather events
+            const teamEvents = [];
+            events.forEach(ev => {
+                const placements = (ev.placements || []).filter(p => p.team === teamName);
+                placements.forEach(p => {
+                    teamEvents.push({
+                        event: ev.name,
+                        pos: p.pos,
+                        points: p.points
+                    });
+                });
+            });
+
+            teamEvents.sort((a, b) => b.points - a.points);
+
+            if (teamEvents.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="py-8 text-center text-slate-500">No events yet.</td></tr>';
+            } else {
+                teamEvents.forEach(e => {
+                    const tr = document.createElement('tr');
+                    const rankColor = e.pos === 1 ? 'text-yellow-400' : e.pos === 2 ? 'text-slate-300' : e.pos === 3 ? 'text-orange-400' : 'text-slate-500';
+                    const rankBadge = e.pos <= 3
+                        ? `<span class="${rankColor} font-bold">#${e.pos}</span>`
+                        : `<span class="text-slate-600">#${e.pos}</span>`;
+
+                    tr.innerHTML = `
+            <td class="py-3 text-sm font-medium text-slate-200">${e.event}</td>
+            <td class="py-3 text-center text-sm">${rankBadge}</td>
+            <td class="py-3 text-right text-sm font-bold text-slate-300">${e.points}</td>
+          `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            // Show
+            modal.classList.remove('hidden');
+            // Animate in
+            requestAnimationFrame(() => {
+                backdrop.classList.remove('opacity-0');
+                panel.classList.remove('opacity-0', 'translate-y-4', 'scale-95');
+            });
+        }
+
+        window.closeModal = function () {
+            backdrop.classList.add('opacity-0');
+            panel.classList.add('opacity-0', 'translate-y-4', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // match transition duration
+        }
+
+        // Main Render
+        async function init() {
+            try {
+                const res = await fetch('./data.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('Failed to load data');
+                const data = await res.json();
+
+                const teamsSource = data.teams || [];
+                const pastEvents = data.pastEvents.sort((a, b) => new Date(b.date) - new Date(a.date)) || [];
+                const upcomingEvents = data.upcoming.sort((a, b) => new Date(b.date) - new Date(a.date)) || [];
+
+                // Calculate Totals
+                const totals = {};
+                pastEvents.forEach(ev => {
+                    (ev.placements || []).forEach(p => {
+                        totals[p.team] = (totals[p.team] || 0) + (p.points || 0);
+                    });
+                });
+                teamsSource.forEach(t => {
+                    totals[t.name] = Math.max(totals[t.name] || 0, t.total || 0);
+                });
+
+                const teams = teamsSource.map(t => ({
+                    name: t.name,
+                    color: t.color,
+                    total: totals[t.name] || 0
+                }));
+
+                teams.sort((a, b) => b.total - a.total);
+                teams.forEach((t, i) => t.rank = i + 1);
+
+                renderPodium(teams, pastEvents);
+
+                // Store data globally for filtering
+                window.allEventsData = { past: pastEvents, upcoming: upcomingEvents, teams: teams };
+                renderEvents('all');
+
+            } catch (err) {
+                console.error(err);
+                qs('#podium-container').innerHTML = '<div class="text-red-500">Error loading data.</div>';
+            }
+        }
+
+        function renderPodium(teams, pastEvents) {
+            const container = qs('#podium-container');
+            container.innerHTML = '';
+
+            // Layout: 1st (Left), 2nd, 3rd, 4th (Right) - Descending
+            const podiumOrder = [
+                { team: teams[0], order: 1, height: 'podium-1', delay: 'delay-0' },   // 1st
+                { team: teams[1], order: 2, height: 'podium-2', delay: 'delay-100' }, // 2nd
+                { team: teams[2], order: 3, height: 'podium-3', delay: 'delay-200' }, // 3rd
+                { team: teams[3], order: 4, height: 'podium-4', delay: 'delay-300' }  // 4th
+            ];
+
+            podiumOrder.forEach(slot => {
+                if (!slot.team) return;
+
+                const isFirst = slot.team.rank === 1;
+                const card = document.createElement('div');
+                // Mobile: order-none (stack naturally by DOM order? No, we want rank order on mobile usually, but let's stick to visual podium for now or flex-col-reverse?)
+                // Actually for mobile, simple stacking by rank is better. But let's try to keep the "podium" feel or just stack them.
+                // Let's use order classes for desktop, but for mobile let's just let them stack.
+                // Wait, flex-col on mobile means they stack top to bottom.
+                // If we want 1st on top on mobile, we need to change order.
+                // Let's use `order-` classes for all breakpoints.
+                // Mobile: 1st (order-1), 2nd (order-2), etc.
+                // Desktop: 4th (order-1), 2nd (order-2), 1st (order-3), 3rd (order-4)
+
+                // Actually, simpler: Just render them in the DOM in the order we want for Mobile (1, 2, 3, 4) and use `order` for Desktop?
+                // Or render in Desktop order (4, 2, 1, 3) and use `order` for Mobile?
+                // Let's stick to the requested Desktop layout: 4 - 2 - 1 - 3.
+
+                const wrapper = document.createElement('div');
+                wrapper.className = `w-full md:w-64 flex flex-col items-center justify-end group cursor-pointer transition-transform hover:scale-105 duration-300 order-${slot.team.rank} md:order-${slot.order}`;
+                wrapper.onclick = () => openModal(slot.team.name, slot.team, pastEvents);
+
+                // Rank Badge
+                const rankColor = slot.team.rank === 1 ? 'bg-yellow-400 text-black' :
+                    slot.team.rank === 2 ? 'bg-slate-300 text-black' :
+                        slot.team.rank === 3 ? 'bg-orange-400 text-black' : 'bg-slate-700 text-white';
+
+                const content = `
+          <div class="relative w-full">
+            <!-- Card -->
+            <div class="glass-card rounded-2xl p-6 relative overflow-hidden ${slot.height} flex flex-col items-center justify-end border-t-4" style="border-color: ${slot.team.color}">
+              
+              <!-- Glow behind -->
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
+              <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[${slot.team.color}]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <!-- Rank -->
+              <div class="absolute top-4 right-4 ${rankColor} font-bold px-3 py-1 rounded-lg text-sm shadow-lg z-10">
+                #${slot.team.rank}
+              </div>
+
+              <!-- Content -->
+              <div class="relative z-10 text-center w-full">
+                <h3 class="font-display font-bold text-white mb-1 truncate ${isFirst ? 'text-3xl md:text-4xl' : 'text-xl md:text-2xl'}">
+                  ${slot.team.name}
+                </h3>
+                <div class="font-display font-black text-white ${isFirst ? 'text-5xl md:text-6xl text-amber-400' : 'text-3xl md:text-4xl'}">
+                  ${slot.team.total}
+                </div>
+                <div class="text-xs text-slate-400 uppercase tracking-wider font-medium mt-1">Points</div>
+              </div>
+            </div>
+            
+            <!-- Reflection/Shadow -->
+            <div class="h-4 w-[90%] mx-auto bg-black/40 blur-md rounded-[100%] mt-4"></div>
+          </div>
+        `;
+
+                wrapper.innerHTML = content;
+                container.appendChild(wrapper);
+            });
+
+            // Remaining teams
+            const othersGrid = qs('#other-teams-grid');
+            othersGrid.innerHTML = '';
+            if (teams.length > 4) {
+                for (let i = 4; i < teams.length; i++) {
+                    const t = teams[i];
+                    const div = document.createElement('div');
+                    div.className = 'glass-card p-4 rounded-xl flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors';
+                    div.onclick = () => openModal(t.name, t, pastEvents);
+                    div.innerHTML = `
+            <div class="flex items-center gap-4">
+              <div class="text-slate-500 font-bold text-lg">#${t.rank}</div>
+              <div class="font-bold text-white" style="color:${t.color}">${t.name}</div>
+            </div>
+            <div class="font-bold text-slate-300">${t.total} pts</div>
+          `;
+                    othersGrid.appendChild(div);
+                }
+            }
+        }
+
+        // Filter Logic
+        window.filterEvents = function (filter) {
+            // Update Tabs
+            ['all', 'completed', 'upcoming'].forEach(t => {
+                const btn = qs(`#tab-${t}`);
+                if (t === filter) {
+                    btn.classList.remove('text-slate-400', 'hover:text-white');
+                    btn.classList.add('bg-slate-800', 'text-white', 'shadow-sm');
+                } else {
+                    btn.classList.add('text-slate-400', 'hover:text-white');
+                    btn.classList.remove('bg-slate-800', 'text-white', 'shadow-sm');
+                }
+            });
+            renderEvents(filter);
+        }
+
+        function renderEvents(filter) {
+            const container = qs('#events-container');
+            container.innerHTML = '';
+
+            const { past, upcoming, teams } = window.allEventsData;
+            const teamsMap = {};
+            teams.forEach(t => teamsMap[t.name] = t);
+
+            // Render Upcoming
+            if (filter === 'all' || filter === 'upcoming') {
+                upcoming.forEach(ev => {
+                    const el = createEventCard(ev, 'upcoming', teamsMap);
+                    container.appendChild(el);
+                });
+            }
+
+            // Render Past
+            if (filter === 'all' || filter === 'completed') {
+                past.forEach(ev => {
+                    const el = createEventCard(ev, 'past', teamsMap);
+                    container.appendChild(el);
+                });
+            }
+        }
+
+        function createEventCard(ev, type, teamsMap) {
+            const isPast = type === 'past';
+            const div = document.createElement('div');
+            div.className = 'relative pl-8 md:pl-12 py-2 group animate-fade-in-up';
+
+            // Dot on timeline
+            const dotColor = isPast ? 'bg-green-500' : 'bg-slate-600';
+            const dotGlow = isPast ? 'shadow-[0_0_10px_rgba(34,197,94,0.5)]' : '';
+
+            div.innerHTML = `
+        <!-- Dot -->
+        <div class="absolute left-[11px] md:left-[27px] top-6 w-3 h-3 rounded-full ${dotColor} ${dotGlow} border-2 border-slate-900 z-10"></div>
+        
+        <!-- Card -->
+        <div class="glass-card rounded-xl p-5 hover:border-slate-600 transition-colors">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+            <div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-amber-400 transition-colors">${ev.name}</h3>
+              <div class="text-sm text-slate-400 flex items-center gap-2 mt-1">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                ${ev.date}
+              </div>
+            </div>
+            ${isPast ? '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">Completed</span>' : '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-700/50 text-slate-400 border border-slate-700">Upcoming</span>'}
+          </div>
+
+          ${isPast ? renderPlacements(ev, teamsMap) : renderUpcomingPoints(ev)}
+        </div>
+      `;
+            return div;
+        }
+
+        function renderUpcomingPoints(ev) {
+            if (!ev.positions) return '';
+            // Sort positions
+            const sorted = [...ev.positions].sort((a, b) => a.pos - b.pos);
+            const top3 = sorted.slice(0, 3);
+
+            let html = '<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 border-t border-slate-800 pt-4">';
+            top3.forEach(p => {
+                const medal = p.pos === 1 ? '🥇' : p.pos === 2 ? '🥈' : '🥉';
+                const color = p.pos === 1 ? 'text-yellow-400' : p.pos === 2 ? 'text-slate-300' : 'text-orange-400';
+                html += `
+          <div class="flex items-center gap-3 bg-slate-900/30 rounded-lg p-2 border border-dashed border-slate-800">
+            <div class="text-xl opacity-50">${medal}</div>
+            <div>
+              <div class="text-sm font-bold text-slate-500">TBD</div>
+              <div class="text-xs ${color} font-medium">${p.points} pts</div>
+            </div>
+          </div>
+        `;
+            });
+            html += '</div>';
+            return html;
+        }
+
+        function renderPlacements(ev, teamsMap) {
+            if (!ev.placements) return '';
+            // Sort placements
+            const sorted = [...ev.placements].sort((a, b) => a.pos - b.pos);
+            // Take top 3
+            const top3 = sorted.slice(0, 3);
+
+            let html = '<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 border-t border-slate-800 pt-4">';
+            top3.forEach(p => {
+                const medal = p.pos === 1 ? '🥇' : p.pos === 2 ? '🥈' : '🥉';
+                const team = teamsMap[p.team];
+                const teamColor = team ? team.color : '#fff';
+
+                html += `
+          <div class="flex items-center gap-3 bg-slate-900/50 rounded-lg p-2">
+            <div class="text-xl">${medal}</div>
+            <div>
+              <div class="text-sm font-bold" style="color: ${teamColor}">${p.team}</div>
+              <div class="text-xs font-medium" style="color: ${teamColor}">${p.points} pts</div>
+            </div>
+          </div>
+        `;
+            });
+            html += '</div>';
+            return html;
+        }
+
+        // Start
+        init();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = qs('#navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-slate-950/90', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.remove('bg-slate-950/90', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+    </script>
+</body>
+
+</html>
