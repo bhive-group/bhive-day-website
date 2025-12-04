@@ -195,20 +195,119 @@
 
       function applyTeamTotals(teams, rankColors, onTeamClick) {
         const section = document.createElement('section');
-        section.className = 'mb-8';
+        section.className = 'mb-12';
         const h = document.createElement('h2');
-        h.className = 'text-lg font-semibold mb-3';
-        h.textContent = 'Team Totals';
+        h.className = 'text-lg font-semibold mb-6 text-center md:text-left';
+        h.textContent = 'Team Standings';
         section.appendChild(h);
 
-        const grid = document.createElement('div');
-        grid.className = 'grid grid-cols-2 md:grid-cols-4 gap-4';
+        // Podium Container
+        const podiumContainer = document.createElement('div');
+        podiumContainer.className = 'flex flex-col md:flex-row items-end justify-center gap-4 mb-8';
 
-        teams.forEach(team => {
-          grid.appendChild(createTeamCard(team, rankColors, onTeamClick));
-        });
+        // Helper to create a podium card
+        function createPodiumCard(team, rank, heightClass, orderClass) {
+          const wrapper = document.createElement('div');
+          // Mobile: full width, Desktop: order based
+          wrapper.className = `w-full md:w-64 flex flex-col items-center ${orderClass}`;
 
-        section.appendChild(grid);
+          const card = document.createElement('div');
+          card.className = `relative bg-white shadow-lg rounded-xl overflow-hidden w-full flex flex-col items-center p-6 border-t-4 transition-transform hover:-translate-y-1 duration-300`;
+          card.style.borderColor = team.color || '#000';
+
+          // Height for desktop podium effect
+          // We use min-height to enforce the step effect
+          if (heightClass) {
+            heightClass.split(' ').forEach(cls => {
+              if (cls) card.classList.add(cls);
+            });
+          }
+
+          // Rank Badge
+          const badge = document.createElement('div');
+          badge.className = 'absolute top-0 right-0 bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded-bl-lg text-sm';
+          badge.textContent = '#' + rank;
+          badge.style.backgroundColor = safeRankColor(rankColors, rank);
+          badge.style.color = '#fff';
+          card.appendChild(badge);
+
+          // Team Name
+          const name = document.createElement('h3');
+          // Rank 1 gets larger text (approx 20% larger than text-2xl which is 1.5rem -> 1.8rem, text-3xl is 1.875rem)
+          const nameSize = rank === 1 ? 'text-3xl' : 'text-2xl';
+          name.className = `${nameSize} font-bold mb-2 text-center`;
+          name.style.color = team.color || '#111827';
+          name.textContent = team.name;
+          if (onTeamClick) {
+            name.style.cursor = 'pointer';
+            name.classList.add('hover:underline', 'decoration-2', 'underline-offset-2');
+            name.onclick = (e) => {
+              e.stopPropagation();
+              onTeamClick(team.name);
+            };
+          }
+          card.appendChild(name);
+
+          // Score
+          const score = document.createElement('div');
+          // Rank 1 gets larger text (text-3xl is 1.875rem -> ~2.25rem, text-4xl is 2.25rem)
+          const scoreSize = rank === 1 ? 'text-4xl' : 'text-3xl';
+          score.className = `${scoreSize} font-extrabold text-gray-800`;
+          score.textContent = team.total;
+          card.appendChild(score);
+
+          const ptsLabel = document.createElement('div');
+          ptsLabel.className = 'text-xs text-gray-500 uppercase tracking-wider font-semibold';
+          ptsLabel.textContent = 'Points';
+          card.appendChild(ptsLabel);
+
+          wrapper.appendChild(card);
+
+          // Podium Step (Visual base) - Optional, but adds to the effect
+          const step = document.createElement('div');
+          step.className = 'hidden md:block w-full bg-gray-200 rounded-t-lg mt-2';
+          if (rank === 1) step.style.height = '32px';
+          if (rank === 2) step.style.height = '16px';
+          if (rank === 3) step.style.height = '8px';
+          // wrapper.appendChild(step);
+
+          return wrapper;
+        }
+
+        // 1st Place (Left)
+        if (teams[0]) {
+          // Order 1
+          podiumContainer.appendChild(createPodiumCard(teams[0], 1, 'md:h-64 md:justify-center', 'md:order-1 z-10'));
+        }
+        // 2nd Place
+        if (teams[1]) {
+          // Order 2
+          podiumContainer.appendChild(createPodiumCard(teams[1], 2, 'md:h-56 md:justify-center', 'md:order-2'));
+        }
+        // 3rd Place
+        if (teams[2]) {
+          // Order 3
+          podiumContainer.appendChild(createPodiumCard(teams[2], 3, 'md:h-48 md:justify-center', 'md:order-3'));
+        }
+        // 4th Place
+        if (teams[3]) {
+          // Order 4
+          podiumContainer.appendChild(createPodiumCard(teams[3], 4, 'md:h-40 md:justify-center', 'md:order-4'));
+        }
+
+        section.appendChild(podiumContainer);
+
+        // Remaining Teams (5th onwards)
+        if (teams.length > 4) {
+          const othersGrid = document.createElement('div');
+          othersGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto';
+
+          for (let i = 4; i < teams.length; i++) {
+            othersGrid.appendChild(createTeamCard(teams[i], rankColors, onTeamClick));
+          }
+          section.appendChild(othersGrid);
+        }
+
         return section;
       }
 
@@ -343,7 +442,7 @@
         table.setAttribute('role', 'table');
 
         const thead = document.createElement('thead');
-        thead.className = 'bg-gray-100';
+        thead.className = 'bg-gray-100 sticky top-0 z-10 shadow-sm';
         thead.innerHTML = '<tr><th class="text-left p-3">Event</th><th class="p-3">1st</th><th class="p-3">2nd</th><th class="p-3">3rd</th></tr>';
         table.appendChild(thead);
 
@@ -371,8 +470,8 @@
             const pos = positions[i] || { pos: i + 1, points: 0 };
             const td = document.createElement('td');
             td.className = 'p-3 text-center';
-            const label = (pos.pos === 1 ? '1st' : pos.pos === 2 ? '2nd' : pos.pos + 'th');
-            td.textContent = `${label} · ${pos.points} pts`;
+            // Removed redundant 1st/2nd/3rd text
+            td.textContent = `${pos.points} pts`;
             if (i === 0) td.classList.add('font-semibold');
             tr.appendChild(td);
           }
@@ -402,8 +501,8 @@
             const pos = positions[i] || { pos: i + 1, points: 0 };
             const td = document.createElement('td');
             td.className = 'p-3 text-center';
-            const label = (pos.pos === 1 ? '1st' : pos.pos === 2 ? '2nd' : pos.pos + 'th');
-            td.textContent = `${label} · ${pos.points} pts`;
+            // Removed redundant 1st/2nd/3rd text
+            td.textContent = `${pos.points} pts`;
             if (i === 0) td.classList.add('font-semibold');
             tr.appendChild(td);
           }
@@ -497,15 +596,16 @@
         function showTeamDetails(teamName) {
           const teamEvents = [];
           (pastEvents || []).forEach(ev => {
-            const placement = (ev.placements || []).find(p => p.team === teamName);
-            if (placement) {
+            // Filter for all placements of this team in the event
+            const placements = (ev.placements || []).filter(p => p.team === teamName);
+            placements.forEach(placement => {
               teamEvents.push({
                 event: ev.name,
                 date: ev.date,
                 points: placement.points || 0,
                 pos: placement.pos
               });
-            }
+            });
           });
 
           // Sort by points desc
