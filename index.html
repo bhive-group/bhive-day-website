@@ -1,551 +1,431 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>BHIVE Day 2025</title>
 
-  <!-- Add Microsoft Clarity -->
-  <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "ufpnhrqsmd");
+  <!-- Fonts: Outfit for headings, Inter for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            gold: '#FFD700',
+            silver: '#C0C0C0',
+            bronze: '#CD7F32',
+            slate: {
+              850: '#1e293b', // Custom dark
+              900: '#0f172a',
+              950: '#020617',
+            }
+          },
+          backgroundImage: {
+            'hero-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          }
+        }
+      }
+    }
   </script>
 
-  <!-- Add Google Analytics -->
-  <!-- Google tag (gtag.js) -->
+  <!-- Analytics (Copied from v1) -->
+  <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "ufpnhrqsmd");
+  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HYMBHTM8QL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-HYMBHTM8QL');
   </script>
 
-  <!-- add favicon -->
-  <link rel="icon" type="image/x-icon" href="./favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Glassmorphism Utilities */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Animations */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .delay-100 {
+      animation-delay: 1s;
+    }
+
+    .delay-200 {
+      animation-delay: 2s;
+    }
+
+    .delay-300 {
+      animation-delay: 3s;
+    }
+
+    /* Podium Heights */
+    .podium-1 {
+      height: 320px;
+    }
+
+    .podium-2 {
+      height: 260px;
+    }
+
+    .podium-3 {
+      height: 200px;
+    }
+
+    .podium-4 {
+      height: 160px;
+    }
+
+    @media (max-width: 768px) {
+
+      .podium-1,
+      .podium-2,
+      .podium-3,
+      .podium-4 {
+        height: auto;
+        min-height: 120px;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800 antialiased">
-  <div class="max-w-6xl mx-auto p-4">
-    <header class="bg-gradient-to-r text-amber-600 rounded-xl p-0 mb-8 flex items-center justify-between" role="banner">
-      <h1 class="text-3xl font-extrabold tracking-tight">BHIVE Day 2025</h1>
-      <div class="flex items-center gap-4">
-        <a href="v2.html" class="text-sm font-medium text-gray-400 hover:text-amber-600 transition-colors">Try v2 ↗</a>
-        <div id="top-scorecard" class="ml-4" aria-hidden="false"></div>
-      </div>
-    </header>
+<body class="bg-slate-950 text-white font-sans antialiased bg-hero-pattern min-h-screen flex flex-col">
 
-    <main id="app" class="" aria-live="polite" role="main">
-      <div id="loading" class="text-center py-12 text-gray-500">Loading…</div>
-    </main>
+  <!-- Navbar -->
+  <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <div class="flex-shrink-0">
+          <h1
+            class="font-display font-black text-2xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+            BHIVE<span class="text-amber-500">DAY</span>
+          </h1>
+        </div>
+        <!-- Mobile "Back to v1" link -->
+        <a href="v1.html"
+          class="md:hidden px-3 py-2 rounded-md text-xs font-bold text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors">Back
+          to v1</a>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="#podium"
+              class="hover:text-amber-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Standings</a>
+            <a href="#events"
+              class="hover:text-amber-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Events</a>
+            <a href="v1.html"
+              class="px-3 py-2 rounded-md text-sm font-bold text-slate-900 bg-amber-500 hover:bg-amber-400 transition-colors">Back
+              to v1</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden">
+    <!-- Background Glow -->
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-amber-500/20 rounded-full blur-[120px] -z-10">
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-fade-in-up">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+        </span>
+        <span class="text-sm font-medium text-green-300 tracking-wide uppercase">Live Scoreboard</span>
+      </div>
+
+      <h1 class="text-6xl md:text-8xl font-display font-black tracking-tighter mb-6 leading-tight">
+        <span class="block text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">BHIVE
+          DAY</span>
+        <span class="block text-amber-500">2025</span>
+      </h1>
+
+      <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400 font-light">
+        Witness the ultimate showdown. Four teams, four leaders, one trophy.
+      </p>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- Podium Section -->
+    <section id="podium" class="py-20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Leaderboard</h2>
+          <div class="h-1 w-20 bg-amber-500 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Podium Container -->
+        <div id="podium-container"
+          class="flex flex-col md:flex-row items-end justify-center gap-4 md:gap-6 min-h-[400px]">
+          <!-- Injected via JS -->
+          <div class="text-slate-500 animate-pulse">Loading standings...</div>
+        </div>
+
+        <!-- Remaining Teams Grid (if any) -->
+        <div id="other-teams-grid" class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"></div>
+      </div>
+    </section>
+
+    <!-- Events Timeline -->
+    <section id="events" class="py-20 bg-slate-900/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
+          <h2 class="text-3xl font-display font-bold text-white">Events Tracker</h2>
+
+          <!-- Tabs -->
+          <div class="flex p-1 bg-slate-900 rounded-xl border border-slate-800">
+            <button onclick="filterEvents('all')" id="tab-all"
+              class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-slate-800 text-white shadow-sm">All</button>
+            <button onclick="filterEvents('completed')" id="tab-completed"
+              class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white">Completed</button>
+            <button onclick="filterEvents('upcoming')" id="tab-upcoming"
+              class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white">Upcoming</button>
+          </div>
+        </div>
+
+        <div id="events-container" class="space-y-6 relative">
+          <!-- Vertical Line -->
+          <div class="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-slate-800"></div>
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </section>
+    </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-950 py-12 border-t border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-slate-500 font-display font-medium">BHIVE DAY 2025</p>
+      <p class="text-slate-600 text-sm mt-2">May the best team win.</p>
+    </div>
+  </footer>
+
+  <!-- Team Details Modal -->
+  <div id="team-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
+    aria-modal="true">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop">
+    </div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+      <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+        <!-- Modal Panel -->
+        <div
+          class="relative transform overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          id="modal-panel">
+
+          <div class="absolute right-0 top-0 pr-4 pt-4 z-10">
+            <button type="button" class="rounded-md bg-slate-900 text-slate-400 hover:text-white focus:outline-none"
+              onclick="closeModal()">
+              <span class="sr-only">Close</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="p-6">
+            <div class="flex items-center gap-4 mb-6">
+              <div id="modal-team-color" class="w-12 h-12 rounded-xl shadow-lg shadow-amber-500/20"></div>
+              <div>
+                <h3 class="text-2xl font-display font-bold text-white" id="modal-title">Team Name</h3>
+                <p class="text-slate-400 text-sm" id="modal-rank">Rank #1</p>
+              </div>
+              <div class="ml-auto text-right">
+                <div class="text-3xl font-display font-black text-white" id="modal-total">0</div>
+                <div class="text-xs text-slate-500 uppercase tracking-wider">Points</div>
+              </div>
+            </div>
+
+            <div class="mt-4 max-h-[60vh] overflow-y-auto custom-scrollbar pr-2">
+              <table class="min-w-full divide-y divide-slate-800">
+                <thead class="bg-slate-950/50 sticky top-0">
+                  <tr>
+                    <th scope="col" class="py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                      Event</th>
+                    <th scope="col"
+                      class="py-3 text-center text-xs font-medium text-slate-400 uppercase tracking-wider">
+                      Rank</th>
+                    <th scope="col" class="py-3 text-right text-xs font-medium text-slate-400 uppercase tracking-wider">
+                      Pts</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800" id="modal-body">
+                  <!-- Rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-    (function () {
-      // minimal helpers
-      function qs(id) { return document.getElementById(id); }
+    // --- Logic ---
+    const qs = (s) => document.querySelector(s);
+    const qsa = (s) => document.querySelectorAll(s);
 
-      function hexToRgb(hex) {
-        if (!hex) return [0, 0, 0];
-        const h = hex.replace('#', '');
-        const full = h.length === 3 ? h.split('').map(s => s + s).join('') : h;
-        const bigint = parseInt(full, 16);
-        return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
-      }
+    // Color Helpers
+    function hexToRgb(hex) {
+      if (!hex) return [0, 0, 0];
+      const h = hex.replace('#', '');
+      const full = h.length === 3 ? h.split('').map(s => s + s).join('') : h;
+      const bigint = parseInt(full, 16);
+      return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
+    }
 
-      function contrastWithWhite(hex) {
-        const [r, g, b] = hexToRgb(hex);
-        // relative luminance
-        const a = [r, g, b].map(v => {
-          v /= 255;
-          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-        });
-        const L = 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
-        const whiteL = 1;
-        const darker = Math.min(L, whiteL);
-        const lighter = Math.max(L, whiteL);
-        return (lighter + 0.05) / (darker + 0.05);
-      }
+    // Modal Logic
+    const modal = qs('#team-modal');
+    const backdrop = qs('#modal-backdrop');
+    const panel = qs('#modal-panel');
 
-      function safeRankColor(rankColors, rank) {
-        const c = (rankColors && rankColors[String(rank)]) || '#64748b';
-        // if contrast with white is too low, darken slightly
-        if (contrastWithWhite(c) < 3.5) {
-          // darken by blending
-          const [r, g, b] = hexToRgb(c);
-          const br = Math.round(r * 0.8);
-          const bg = Math.round(g * 0.8);
-          const bb = Math.round(b * 0.8);
-          return '#' + [br, bg, bb].map(v => v.toString(16).padStart(2, '0')).join('');
-        }
-        return c;
-      }
+    function openModal(teamName, teamData, events) {
+      // Populate Data
+      qs('#modal-title').textContent = teamName;
+      qs('#modal-title').style.color = teamData.color;
+      qs('#modal-team-color').style.backgroundColor = teamData.color;
+      qs('#modal-team-color').style.boxShadow = `0 0 20px ${teamData.color}40`; // 25% opacity glow
+      qs('#modal-rank').textContent = `Rank #${teamData.rank}`;
+      qs('#modal-total').textContent = teamData.total;
 
-      function buildHeaderTop(team) {
-        const wrap = document.createElement('div');
-        wrap.style.display = 'none';
-        wrap.className = 'bg-amber-400/20 inline-flex items-center space-x-4 px-4 py-3 rounded backdrop-blur-lg';
-        wrap.setAttribute('aria-label', 'Top team');
-        const name = document.createElement('div');
-        name.className = 'text-sm font-semibold';
-        name.style.color = team.color || '#111827';
-        name.textContent = team.name;
-        const meta = document.createElement('div');
-        meta.className = 'text-xs text-gray-500';
-        meta.textContent = `#${team.rank} · ${team.total} pts`;
-        wrap.appendChild(name);
-        wrap.appendChild(meta);
-        return wrap;
-      }
+      const tbody = qs('#modal-body');
+      tbody.innerHTML = '';
 
-      function createTeamCard(team, rankColors, onTeamClick) {
-        const card = document.createElement('article');
-        // make card the relative container but do not add internal padding on the card itself
-        card.className = 'relative bg-white shadow rounded-lg overflow-hidden flex items-center';
-        card.setAttribute('role', 'article');
-        card.setAttribute('aria-label', team.name + ' team card');
-
-        // inner content wrapper - gives the padding but leaves right edge free for absolute panel
-        const content = document.createElement('div');
-        // right padding must match the panel width so text never overlaps
-        // Increased mobile padding from pr-14 to pr-20 to prevent overlap
-        content.className = 'p-4 flex-1 pr-20 md:pr-[72px]';
-
-        const name = document.createElement('div');
-
-        if (team.rank == 1) {
-          name.className = 'text-xl font-bold';
-          card.style.border = '0.11px double ' + (team.color || '#000');
-          card.style.borderLeft = '4px solid ' + (team.color || '#000');
-        } else {
-          name.className = 'text-lg font-semibold';
-          card.style.borderLeft = '4px solid ' + (team.color || '#000');
-        }
-
-        name.style.color = team.color || '#111827';
-        name.textContent = team.name;
-
-        if (onTeamClick) {
-          name.style.cursor = 'pointer';
-          name.classList.add('hover:underline', 'decoration-2', 'underline-offset-2');
-          name.onclick = (e) => {
-            e.stopPropagation();
-            onTeamClick(team.name);
-          };
-          // Make the whole card clickable too for better UX on mobile? 
-          // User specifically asked for "clicked on team names", but card is better. 
-          // Let's stick to name as requested, but maybe add a subtle hint.
-        }
-
-        content.appendChild(name);
-
-        const score = document.createElement('div');
-        score.className = 'text-sm text-gray-500 mt-1';
-        score.textContent = String(team.total) + ' pts';
-        content.appendChild(score);
-
-        card.appendChild(content);
-
-        // right-side rank panel (positioned absolutely so it spans the card edge-to-edge)
-        const rank = team.rank || 0;
-        const baseColor = safeRankColor(rankColors, rank);
-        const panel = document.createElement('div');
-        // absolute full-height panel flush to the card's right border
-        panel.className = 'absolute right-0 top-0 bottom-0 flex items-center justify-center text-white font-bold rounded-r-lg';
-        // mobile width 56px (w-14), desktop 72px (arbitrary value)
-        panel.classList.add('w-14', 'md:w-[72px]');
-        // ensure panel doesn't shrink and uses box-sizing
-        panel.style.boxSizing = 'border-box';
-        // textured overlay using linear-gradient on top of base color
-        // panel.style.background = `linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)), ${baseColor}`;
-
-        // // Border should be 20% opacity
-        // panel.style.borderColor = `${baseColor}`;
-        // panel.style.borderRight = `10px solid ${baseColor}`;
-
-        if (team.rank == 1) {
-          card.style.background = `linear-gradient(90deg, #ffffff, #fff8e1 75%, ${baseColor} 400%)`;
-
-          panel.style.scale = '1.5';
-        } else {
-          card.style.background = `linear-gradient(90deg, #ffffff, #fff8e1 200%, ${baseColor} 400%)`;
-          card.style.color = `${baseColor}`;
-          // card.style.background = `linear-gradient(90deg, #ffffff, ${baseColor})`;
-          // panel.style.background = `linear-gradient(to right, #ffffff, #eeeeee 70%, ${baseColor} 120%)`;
-        }
-
-        panel.style.color = `${baseColor}`;
-
-        // center rank number and ensure it appears large
-        panel.style.padding = '0.5rem';
-
-        const rankText = document.createElement('div');
-        rankText.className = 'text-2xl';
-        rankText.textContent = String(rank);
-        rankText.setAttribute('aria-hidden', 'false');
-        panel.appendChild(rankText);
-
-        card.appendChild(panel);
-
-        return card;
-      }
-
-      function applyTeamTotals(teams, rankColors, onTeamClick) {
-        const section = document.createElement('section');
-        section.className = 'mb-12';
-        const h = document.createElement('h2');
-        h.className = 'text-lg font-semibold mb-6 text-center md:text-left';
-        h.textContent = 'Team Standings';
-        section.appendChild(h);
-
-        // Podium Container
-        const podiumContainer = document.createElement('div');
-        podiumContainer.className = 'flex flex-col md:flex-row items-end justify-center gap-4 mb-8';
-
-        // Helper to create a podium card
-        function createPodiumCard(team, rank, heightClass, orderClass) {
-          const wrapper = document.createElement('div');
-          // Mobile: full width, Desktop: order based
-          wrapper.className = `w-full md:w-64 flex flex-col items-center ${orderClass}`;
-
-          const card = document.createElement('div');
-          card.className = `relative bg-white shadow-lg rounded-xl overflow-hidden w-full flex flex-col items-center p-6 border-t-4 transition-transform hover:-translate-y-1 duration-300`;
-          card.style.borderColor = team.color || '#000';
-
-          // Height for desktop podium effect
-          // We use min-height to enforce the step effect
-          if (heightClass) {
-            heightClass.split(' ').forEach(cls => {
-              if (cls) card.classList.add(cls);
-            });
-          }
-
-          // Rank Badge
-          const badge = document.createElement('div');
-          badge.className = 'absolute top-0 right-0 bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded-bl-lg text-sm';
-          badge.textContent = '#' + rank;
-          badge.style.backgroundColor = safeRankColor(rankColors, rank);
-          badge.style.color = '#fff';
-          card.appendChild(badge);
-
-          // Team Name
-          const name = document.createElement('h3');
-          // Rank 1 gets larger text (approx 20% larger than text-2xl which is 1.5rem -> 1.8rem, text-3xl is 1.875rem)
-          const nameSize = rank === 1 ? 'text-3xl' : 'text-2xl';
-          name.className = `${nameSize} font-bold mb-2 text-center`;
-          name.style.color = team.color || '#111827';
-          name.textContent = team.name;
-          if (onTeamClick) {
-            name.style.cursor = 'pointer';
-            name.classList.add('hover:underline', 'decoration-2', 'underline-offset-2');
-            name.onclick = (e) => {
-              e.stopPropagation();
-              onTeamClick(team.name);
-            };
-          }
-          card.appendChild(name);
-
-          // Score
-          const score = document.createElement('div');
-          // Rank 1 gets larger text (text-3xl is 1.875rem -> ~2.25rem, text-4xl is 2.25rem)
-          const scoreSize = rank === 1 ? 'text-4xl' : 'text-3xl';
-          score.className = `${scoreSize} font-extrabold text-gray-800`;
-          score.textContent = team.total;
-          card.appendChild(score);
-
-          const ptsLabel = document.createElement('div');
-          ptsLabel.className = 'text-xs text-gray-500 uppercase tracking-wider font-semibold';
-          ptsLabel.textContent = 'Points';
-          card.appendChild(ptsLabel);
-
-          wrapper.appendChild(card);
-
-          // Podium Step (Visual base) - Optional, but adds to the effect
-          const step = document.createElement('div');
-          step.className = 'hidden md:block w-full bg-gray-200 rounded-t-lg mt-2';
-          if (rank === 1) step.style.height = '32px';
-          if (rank === 2) step.style.height = '16px';
-          if (rank === 3) step.style.height = '8px';
-          // wrapper.appendChild(step);
-
-          return wrapper;
-        }
-
-        // 1st Place (Left)
-        if (teams[0]) {
-          // Order 1
-          podiumContainer.appendChild(createPodiumCard(teams[0], 1, 'md:h-64 md:justify-center', 'md:order-1 z-10'));
-        }
-        // 2nd Place
-        if (teams[1]) {
-          // Order 2
-          podiumContainer.appendChild(createPodiumCard(teams[1], 2, 'md:h-56 md:justify-center', 'md:order-2'));
-        }
-        // 3rd Place
-        if (teams[2]) {
-          // Order 3
-          podiumContainer.appendChild(createPodiumCard(teams[2], 3, 'md:h-48 md:justify-center', 'md:order-3'));
-        }
-        // 4th Place
-        if (teams[3]) {
-          // Order 4
-          podiumContainer.appendChild(createPodiumCard(teams[3], 4, 'md:h-40 md:justify-center', 'md:order-4'));
-        }
-
-        section.appendChild(podiumContainer);
-
-        // Remaining Teams (5th onwards)
-        if (teams.length > 4) {
-          const othersGrid = document.createElement('div');
-          othersGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto';
-
-          for (let i = 4; i < teams.length; i++) {
-            othersGrid.appendChild(createTeamCard(teams[i], rankColors, onTeamClick));
-          }
-          section.appendChild(othersGrid);
-        }
-
-        return section;
-      }
-
-      function applyEventWinners(eventWinners, teamsByName) {
-        const section = document.createElement('section');
-        section.className = 'mb-8';
-        const h = document.createElement('h2');
-        h.className = 'text-lg font-semibold mb-3';
-        h.textContent = 'Event Winners';
-        section.appendChild(h);
-
-        const grid = document.createElement('div');
-        grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-4';
-
-        (eventWinners || []).forEach(ev => {
-          const card = document.createElement('article');
-          card.className = 'bg-white shadow rounded-lg p-4';
-          const title = document.createElement('h3');
-          title.className = 'text-lg font-bold text-gray-900 mb-2 pb-1 border-b border-gray-200';
-          title.textContent = ev.name;
-          card.appendChild(title);
-
-          // Date line (small, muted)
-          // const dateEl = document.createElement('div');
-          // dateEl.className = 'text-xs text-gray-500 mb-2';
-          // dateEl.textContent = ev.date || 'Missing';
-          // card.appendChild(dateEl);
-
-          // First winner team color
-          const firstPlace = (ev.placements || []).find(p => p.pos === 1);
-          if (firstPlace) {
-            const team = teamsByName[firstPlace.team];
-            card.style.border = `0.1px double ${team?.color || '#000000'}`;
-          }
-
-          const list = document.createElement('ol');
-          list.className = 'list-decimal list-inside space-y-1';
-          (ev.placements || []).sort((a, b) => a.pos - b.pos).forEach(place => {
-            const li = document.createElement('li');
-            li.className = 'flex justify-between';
-
-            const teamSpan = document.createElement('span');
-            const team = teamsByName[place.team];
-
-            const fontColor = firstPlace === place ? team?.color || '#888888' : '#888888';
-
-            teamSpan.textContent = place.team;
-            teamSpan.style.color = fontColor;
-            const pts = document.createElement('span');
-            pts.className = 'text-sm text-gray-500';
-            pts.textContent = place.points + ' pts';
-            pts.style.color = fontColor;
-            li.appendChild(teamSpan);
-            li.appendChild(pts);
-            list.appendChild(li);
+      // Gather events
+      const teamEvents = [];
+      events.forEach(ev => {
+        const placements = (ev.placements || []).filter(p => p.team === teamName);
+        placements.forEach(p => {
+          teamEvents.push({
+            event: ev.name,
+            pos: p.pos,
+            points: p.points
           });
-
-          card.appendChild(list);
-          grid.appendChild(card);
         });
+      });
 
-        // Append grid
-        section.appendChild(grid);
+      teamEvents.sort((a, b) => b.points - a.points);
 
-        // Placeholder skeletons to fill rows
-        function createPlaceholderCard() {
-          const ph = document.createElement('article');
-          ph.className = 'bg-white shadow rounded-lg p-4';
-          ph.setAttribute('aria-hidden', 'true');
-          ph.dataset.placeholder = 'true';
-          const bar1 = document.createElement('div');
-          bar1.className = 'h-5 bg-gray-200 rounded w-2/3 mb-3';
-          ph.appendChild(bar1);
-          const barDate = document.createElement('div');
-          barDate.className = 'h-3 bg-gray-200 rounded w-24 mb-3';
-          ph.appendChild(barDate);
-          for (let i = 0; i < 3; i++) {
-            const line = document.createElement('div');
-            line.className = 'h-4 bg-gray-200 rounded w-full mb-2';
-            ph.appendChild(line);
-          }
-          return ph;
-        }
-
-        function padPlaceholders() {
-          const totalCards = grid.querySelectorAll('article:not([data-placeholder="true"])').length;
-          grid.querySelectorAll('article[data-placeholder="true"]').forEach(n => n.remove());
-          let cols = 3;
-          try {
-            const comp = getComputedStyle(grid);
-            const tpl = comp.gridTemplateColumns || '';
-            const parts = tpl.trim().split(/\s+/).filter(Boolean);
-            if (parts.length > 0) { cols = parts.length; }
-          } catch (e) { }
-          cols = Math.max(1, cols);
-          const remainder = totalCards % cols;
-          const needed = remainder === 0 ? 0 : (cols - remainder);
-          for (let i = 0; i < needed; i++) grid.appendChild(createPlaceholderCard());
-        }
-
-        // Initial pad assuming 3 columns, then refine on next frame
-        (function initialPad() {
-          const totalCards = grid.querySelectorAll('article').length;
-          const cols = 3;
-          const remainder = totalCards % cols;
-          const needed = remainder === 0 ? 0 : (cols - remainder);
-          for (let i = 0; i < needed; i++) grid.appendChild(createPlaceholderCard());
-        })();
-        requestAnimationFrame(padPlaceholders);
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(padPlaceholders, 100);
-        }, { passive: true });
-
-        return section;
-      }
-
-      function applyAllEvents(pastEvents, upcomingEvents) {
-        const section = document.createElement('section');
-        section.className = 'mb-12';
-        const h = document.createElement('h2');
-        h.className = 'text-lg font-semibold mb-3';
-        h.textContent = 'Past and Upcoming Events';
-        section.appendChild(h);
-
-        const tableWrap = document.createElement('div');
-        tableWrap.className = 'bg-white shadow rounded-lg overflow-auto';
-
-        const table = document.createElement('table');
-        table.className = 'min-w-full table-auto';
-        table.setAttribute('role', 'table');
-
-        const thead = document.createElement('thead');
-        thead.className = 'bg-gray-100 sticky top-0 z-10 shadow-sm';
-        thead.innerHTML = '<tr><th class="text-left p-3">Event</th><th class="p-3">1st</th><th class="p-3">2nd</th><th class="p-3">3rd</th></tr>';
-        table.appendChild(thead);
-
-        const tbody = document.createElement('tbody');
-
-        upcomingEvents.forEach(ev => {
+      if (teamEvents.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="py-8 text-center text-slate-500">No events yet.</td></tr>';
+      } else {
+        teamEvents.forEach(e => {
           const tr = document.createElement('tr');
-          tr.className = 'border-t';
-          const nameTd = document.createElement('td');
-          nameTd.className = 'p-3';
-          const nameWrap = document.createElement('div');
-          const nameEl = document.createElement('div');
-          nameEl.className = 'font-medium';
-          nameEl.textContent = ev.name;
-          nameWrap.appendChild(nameEl);
-          const dateEl = document.createElement('div');
-          dateEl.className = 'text-xs text-gray-500';
-          dateEl.textContent = ev.date || 'Missing';
-          nameWrap.appendChild(dateEl);
-          nameTd.appendChild(nameWrap);
-          tr.appendChild(nameTd);
+          const rankColor = e.pos === 1 ? 'text-yellow-400' : e.pos === 2 ? 'text-slate-300' : e.pos === 3 ? 'text-orange-400' : 'text-slate-500';
+          const rankBadge = e.pos <= 3
+            ? `<span class="${rankColor} font-bold">#${e.pos}</span>`
+            : `<span class="text-slate-600">#${e.pos}</span>`;
 
-          const positions = (ev.positions || []).sort((a, b) => a.pos - b.pos);
-          for (let i = 0; i < 3; i++) {
-            const pos = positions[i] || { pos: i + 1, points: 0 };
-            const td = document.createElement('td');
-            td.className = 'p-3 text-center';
-            // Removed redundant 1st/2nd/3rd text
-            td.textContent = `${pos.points} pts`;
-            if (i === 0) td.classList.add('font-semibold');
-            tr.appendChild(td);
-          }
-
+          tr.innerHTML = `
+            <td class="py-3 text-sm font-medium text-slate-200">${e.event}</td>
+            <td class="py-3 text-center text-sm">${rankBadge}</td>
+            <td class="py-3 text-right text-sm font-bold text-slate-300">${e.points}</td>
+          `;
           tbody.appendChild(tr);
         });
-
-        pastEvents.forEach(ev => {
-          const tr = document.createElement('tr');
-          tr.className = 'border-t bg-gray-50';
-          const nameTd = document.createElement('td');
-          nameTd.className = 'p-3';
-          const nameWrap = document.createElement('div');
-          const nameEl = document.createElement('div');
-          nameEl.className = 'font-medium';
-          nameEl.textContent = ev.name;
-          nameWrap.appendChild(nameEl);
-          const dateEl = document.createElement('div');
-          dateEl.className = 'text-xs text-gray-500';
-          dateEl.textContent = ev.date || 'Missing';
-          nameWrap.appendChild(dateEl);
-          nameTd.appendChild(nameWrap);
-          tr.appendChild(nameTd);
-
-          const positions = (ev.placements || []).sort((a, b) => a.pos - b.pos);
-          for (let i = 0; i < 3; i++) {
-            const pos = positions[i] || { pos: i + 1, points: 0 };
-            const td = document.createElement('td');
-            td.className = 'p-3 text-center';
-            // Removed redundant 1st/2nd/3rd text
-            td.textContent = `${pos.points} pts`;
-            if (i === 0) td.classList.add('font-semibold');
-            tr.appendChild(td);
-          }
-
-          tbody.appendChild(tr);
-        });
-
-        table.appendChild(tbody);
-        tableWrap.appendChild(table);
-        section.appendChild(tableWrap);
-        return section;
       }
 
-      function showError(message) {
-        const app = qs('app');
-        app.innerHTML = '';
-        const err = document.createElement('div');
-        err.className = 'bg-red-50 border border-red-200 text-red-800 p-4 rounded';
-        err.textContent = message;
-        app.appendChild(err);
-      }
+      // Show
+      modal.classList.remove('hidden');
+      // Animate in
+      requestAnimationFrame(() => {
+        backdrop.classList.remove('opacity-0');
+        panel.classList.remove('opacity-0', 'translate-y-4', 'scale-95');
+      });
+    }
 
-      // fetch and render
-      fetch('./data.json', { cache: 'no-store' }).then(r => {
-        if (!r.ok) throw new Error('Failed to load data.json: ' + r.status);
-        return r.json();
-      }).then(data => {
-        const app = qs('app');
-        const loading = qs('loading');
-        loading?.remove();
-        app.innerHTML = '';
+    window.closeModal = function () {
+      backdrop.classList.add('opacity-0');
+      panel.classList.add('opacity-0', 'translate-y-4', 'scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300); // match transition duration
+    }
+
+    // Main Render
+    async function init() {
+      try {
+        const res = await fetch('./data.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to load data');
+        const data = await res.json();
 
         const teamsSource = data.teams || [];
         const pastEvents = data.pastEvents.sort((a, b) => new Date(b.date) - new Date(a.date)) || [];
         const upcomingEvents = data.upcoming.sort((a, b) => new Date(b.date) - new Date(a.date)) || [];
-        const rankColors = data.rankColors || {};
 
-        // build totals (respecting provided totals if present)
+        // Calculate Totals
         const totals = {};
-        (pastEvents || []).forEach(ev => {
+        pastEvents.forEach(ev => {
           (ev.placements || []).forEach(p => {
             totals[p.team] = (totals[p.team] || 0) + (p.points || 0);
           });
@@ -563,98 +443,250 @@
         teams.sort((a, b) => b.total - a.total);
         teams.forEach((t, i) => t.rank = i + 1);
 
-        const teamsByName = {};
-        teams.forEach(t => teamsByName[t.name] = t);
+        renderPodium(teams, pastEvents);
 
-        // header top team
-        const top = teams[0] || { name: '—', color: '#111827', rank: 1, total: 0 };
-        const headerCard = buildHeaderTop(top);
-        const headerSlot = qs('top-scorecard');
-        headerSlot.innerHTML = '';
-        headerSlot.appendChild(headerCard);
+        // Store data globally for filtering
+        window.allEventsData = { past: pastEvents, upcoming: upcomingEvents, teams: teams };
+        renderEvents('all');
 
-        // Modal Logic
-        const modalOverlay = document.createElement('div');
-        modalOverlay.className = 'fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm';
-        modalOverlay.id = 'score-modal';
-        modalOverlay.onclick = (e) => {
-          if (e.target === modalOverlay) modalOverlay.classList.add('hidden');
-        };
-
-        const modalContent = document.createElement('div');
-        modalContent.className = 'bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[80vh] overflow-hidden flex flex-col';
-        modalContent.innerHTML = `
-          <div class="p-4 border-b flex justify-between items-center bg-gray-50">
-            <h3 class="text-xl font-bold" id="modal-title">Team Details</h3>
-            <button onclick="document.getElementById('score-modal').classList.add('hidden')" class="text-gray-500 hover:text-gray-700 p-1">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-          </div>
-          <div class="overflow-y-auto p-0" id="modal-body"></div>
-          <div class="p-4 border-t bg-gray-50 text-right font-bold text-lg" id="modal-footer"></div>
-        `;
-        modalOverlay.appendChild(modalContent);
-        document.body.appendChild(modalOverlay);
-
-        function showTeamDetails(teamName) {
-          const teamEvents = [];
-          (pastEvents || []).forEach(ev => {
-            // Filter for all placements of this team in the event
-            const placements = (ev.placements || []).filter(p => p.team === teamName);
-            placements.forEach(placement => {
-              teamEvents.push({
-                event: ev.name,
-                date: ev.date,
-                points: placement.points || 0,
-                pos: placement.pos
-              });
-            });
-          });
-
-          // Sort by points desc
-          teamEvents.sort((a, b) => b.points - a.points);
-
-          const titleEl = modalContent.querySelector('#modal-title');
-          const bodyEl = modalContent.querySelector('#modal-body');
-          const footerEl = modalContent.querySelector('#modal-footer');
-
-          const teamColor = teamsByName[teamName]?.color || '#000';
-          titleEl.textContent = teamName;
-          titleEl.style.color = teamColor;
-
-          if (teamEvents.length === 0) {
-            bodyEl.innerHTML = '<div class="p-8 text-center text-gray-500">No events participated yet.</div>';
-            footerEl.textContent = 'Total: 0 pts';
-          } else {
-            let html = '<table class="w-full text-left border-collapse">';
-            html += '<thead class="bg-gray-100 text-xs uppercase text-gray-500 sticky top-0"><tr><th class="p-3">Event</th><th class="p-3 text-center">Rank</th><th class="p-3 text-right">Points</th></tr></thead>';
-            html += '<tbody class="divide-y divide-gray-100">';
-            let total = 0;
-            teamEvents.forEach(e => {
-              total += e.points;
-              html += `<tr class="hover:bg-gray-50 transition-colors">
-                <td class="p-3 text-sm font-medium text-gray-900">${e.event}</td>
-                <td class="p-3 text-center text-sm text-gray-500">#${e.pos}</td>
-                <td class="p-3 text-right text-sm font-bold text-gray-700">${e.points}</td>
-              </tr>`;
-            });
-            html += '</tbody></table>';
-            bodyEl.innerHTML = html;
-            footerEl.innerHTML = `<span class="text-gray-500 text-sm font-normal mr-2">Total Score</span> <span style="color:${teamColor}">${total} pts</span>`;
-          }
-
-          modalOverlay.classList.remove('hidden');
-        }
-
-        app.appendChild(applyTeamTotals(teams, rankColors, showTeamDetails));
-        app.appendChild(applyEventWinners(pastEvents, teamsByName));
-        app.appendChild(applyAllEvents(pastEvents, upcomingEvents));
-      }).catch(err => {
+      } catch (err) {
         console.error(err);
-        showError('Could not load scoreboard data.');
+        qs('#podium-container').innerHTML = '<div class="text-red-500">Error loading data.</div>';
+      }
+    }
+
+    function renderPodium(teams, pastEvents) {
+      const container = qs('#podium-container');
+      container.innerHTML = '';
+
+      // Layout: 1st (Left), 2nd, 3rd, 4th (Right) - Descending
+      const podiumOrder = [
+        { team: teams[0], order: 1, height: 'podium-1', delay: 'delay-0' },   // 1st
+        { team: teams[1], order: 2, height: 'podium-2', delay: 'delay-100' }, // 2nd
+        { team: teams[2], order: 3, height: 'podium-3', delay: 'delay-200' }, // 3rd
+        { team: teams[3], order: 4, height: 'podium-4', delay: 'delay-300' }  // 4th
+      ];
+
+      podiumOrder.forEach(slot => {
+        if (!slot.team) return;
+
+        const isFirst = slot.team.rank === 1;
+        const card = document.createElement('div');
+        // Mobile: order-none (stack naturally by DOM order? No, we want rank order on mobile usually, but let's stick to visual podium for now or flex-col-reverse?)
+        // Actually for mobile, simple stacking by rank is better. But let's try to keep the "podium" feel or just stack them.
+        // Let's use order classes for desktop, but for mobile let's just let them stack.
+        // Wait, flex-col on mobile means they stack top to bottom.
+        // If we want 1st on top on mobile, we need to change order.
+        // Let's use `order-` classes for all breakpoints.
+        // Mobile: 1st (order-1), 2nd (order-2), etc.
+        // Desktop: 4th (order-1), 2nd (order-2), 1st (order-3), 3rd (order-4)
+
+        // Actually, simpler: Just render them in the DOM in the order we want for Mobile (1, 2, 3, 4) and use `order` for Desktop?
+        // Or render in Desktop order (4, 2, 1, 3) and use `order` for Mobile?
+        // Let's stick to the requested Desktop layout: 4 - 2 - 1 - 3.
+
+        const wrapper = document.createElement('div');
+        wrapper.className = `w-full md:w-64 flex flex-col items-center justify-end group cursor-pointer transition-transform hover:scale-105 duration-300 order-${slot.team.rank} md:order-${slot.order}`;
+        wrapper.onclick = () => openModal(slot.team.name, slot.team, pastEvents);
+
+        // Rank Badge
+        const rankColor = slot.team.rank === 1 ? 'bg-yellow-400 text-black' :
+          slot.team.rank === 2 ? 'bg-slate-300 text-black' :
+            slot.team.rank === 3 ? 'bg-orange-400 text-black' : 'bg-slate-700 text-white';
+
+        const content = `
+          <div class="relative w-full">
+            <!-- Card -->
+            <div class="glass-card rounded-2xl p-6 relative overflow-hidden ${slot.height} flex flex-col items-center justify-end border-t-4" style="border-color: ${slot.team.color}">
+              
+              <!-- Glow behind -->
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
+              <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[${slot.team.color}]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <!-- Rank -->
+              <div class="absolute top-4 right-4 ${rankColor} font-bold px-3 py-1 rounded-lg text-sm shadow-lg z-10">
+                #${slot.team.rank}
+              </div>
+
+              <!-- Content -->
+              <div class="relative z-10 text-center w-full">
+                <h3 class="font-display font-bold text-white mb-1 truncate ${isFirst ? 'text-3xl md:text-4xl' : 'text-xl md:text-2xl'}">
+                  ${slot.team.name}
+                </h3>
+                <div class="font-display font-black text-white ${isFirst ? 'text-5xl md:text-6xl text-amber-400' : 'text-3xl md:text-4xl'}">
+                  ${slot.team.total}
+                </div>
+                <div class="text-xs text-slate-400 uppercase tracking-wider font-medium mt-1">Points</div>
+              </div>
+            </div>
+            
+            <!-- Reflection/Shadow -->
+            <div class="h-4 w-[90%] mx-auto bg-black/40 blur-md rounded-[100%] mt-4"></div>
+          </div>
+        `;
+
+        wrapper.innerHTML = content;
+        container.appendChild(wrapper);
       });
 
-    })();
+      // Remaining teams
+      const othersGrid = qs('#other-teams-grid');
+      othersGrid.innerHTML = '';
+      if (teams.length > 4) {
+        for (let i = 4; i < teams.length; i++) {
+          const t = teams[i];
+          const div = document.createElement('div');
+          div.className = 'glass-card p-4 rounded-xl flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors';
+          div.onclick = () => openModal(t.name, t, pastEvents);
+          div.innerHTML = `
+            <div class="flex items-center gap-4">
+              <div class="text-slate-500 font-bold text-lg">#${t.rank}</div>
+              <div class="font-bold text-white" style="color:${t.color}">${t.name}</div>
+            </div>
+            <div class="font-bold text-slate-300">${t.total} pts</div>
+          `;
+          othersGrid.appendChild(div);
+        }
+      }
+    }
+
+    // Filter Logic
+    window.filterEvents = function (filter) {
+      // Update Tabs
+      ['all', 'completed', 'upcoming'].forEach(t => {
+        const btn = qs(`#tab-${t}`);
+        if (t === filter) {
+          btn.classList.remove('text-slate-400', 'hover:text-white');
+          btn.classList.add('bg-slate-800', 'text-white', 'shadow-sm');
+        } else {
+          btn.classList.add('text-slate-400', 'hover:text-white');
+          btn.classList.remove('bg-slate-800', 'text-white', 'shadow-sm');
+        }
+      });
+      renderEvents(filter);
+    }
+
+    function renderEvents(filter) {
+      const container = qs('#events-container');
+      container.innerHTML = '';
+
+      const { past, upcoming, teams } = window.allEventsData;
+      const teamsMap = {};
+      teams.forEach(t => teamsMap[t.name] = t);
+
+      // Render Upcoming
+      if (filter === 'all' || filter === 'upcoming') {
+        upcoming.forEach(ev => {
+          const el = createEventCard(ev, 'upcoming', teamsMap);
+          container.appendChild(el);
+        });
+      }
+
+      // Render Past
+      if (filter === 'all' || filter === 'completed') {
+        past.forEach(ev => {
+          const el = createEventCard(ev, 'past', teamsMap);
+          container.appendChild(el);
+        });
+      }
+    }
+
+    function createEventCard(ev, type, teamsMap) {
+      const isPast = type === 'past';
+      const div = document.createElement('div');
+      div.className = 'relative pl-8 md:pl-12 py-2 group animate-fade-in-up';
+
+      // Dot on timeline
+      const dotColor = isPast ? 'bg-green-500' : 'bg-slate-600';
+      const dotGlow = isPast ? 'shadow-[0_0_10px_rgba(34,197,94,0.5)]' : '';
+
+      div.innerHTML = `
+        <!-- Dot -->
+        <div class="absolute left-[11px] md:left-[27px] top-6 w-3 h-3 rounded-full ${dotColor} ${dotGlow} border-2 border-slate-900 z-10"></div>
+        
+        <!-- Card -->
+        <div class="glass-card rounded-xl p-5 hover:border-slate-600 transition-colors">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+            <div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-amber-400 transition-colors">${ev.name}</h3>
+              <div class="text-sm text-slate-400 flex items-center gap-2 mt-1">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                ${ev.date}
+              </div>
+            </div>
+            ${isPast ? '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">Completed</span>' : '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-700/50 text-slate-400 border border-slate-700">Upcoming</span>'}
+          </div>
+
+          ${isPast ? renderPlacements(ev, teamsMap) : renderUpcomingPoints(ev)}
+        </div>
+      `;
+      return div;
+    }
+
+    function renderUpcomingPoints(ev) {
+      if (!ev.positions) return '';
+      // Sort positions
+      const sorted = [...ev.positions].sort((a, b) => a.pos - b.pos);
+      const top3 = sorted.slice(0, 3);
+
+      let html = '<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 border-t border-slate-800 pt-4">';
+      top3.forEach(p => {
+        const medal = p.pos === 1 ? '🥇' : p.pos === 2 ? '🥈' : '🥉';
+        const color = p.pos === 1 ? 'text-yellow-400' : p.pos === 2 ? 'text-slate-300' : 'text-orange-400';
+        html += `
+          <div class="flex items-center gap-3 bg-slate-900/30 rounded-lg p-2 border border-dashed border-slate-800">
+            <div class="text-xl opacity-50">${medal}</div>
+            <div>
+              <div class="text-sm font-bold text-slate-500">TBD</div>
+              <div class="text-xs ${color} font-medium">${p.points} pts</div>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      return html;
+    }
+
+    function renderPlacements(ev, teamsMap) {
+      if (!ev.placements) return '';
+      // Sort placements
+      const sorted = [...ev.placements].sort((a, b) => a.pos - b.pos);
+      // Take top 3
+      const top3 = sorted.slice(0, 3);
+
+      let html = '<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 border-t border-slate-800 pt-4">';
+      top3.forEach(p => {
+        const medal = p.pos === 1 ? '🥇' : p.pos === 2 ? '🥈' : '🥉';
+        const team = teamsMap[p.team];
+        const teamColor = team ? team.color : '#fff';
+
+        html += `
+          <div class="flex items-center gap-3 bg-slate-900/50 rounded-lg p-2">
+            <div class="text-xl">${medal}</div>
+            <div>
+              <div class="text-sm font-bold" style="color: ${teamColor}">${p.team}</div>
+              <div class="text-xs font-medium" style="color: ${teamColor}">${p.points} pts</div>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      return html;
+    }
+
+    // Start
+    init();
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+      const nav = qs('#navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('bg-slate-950/90', 'backdrop-blur-md', 'shadow-lg');
+      } else {
+        nav.classList.remove('bg-slate-950/90', 'backdrop-blur-md', 'shadow-lg');
+      }
+    });
+
   </script>
 </body>
 
