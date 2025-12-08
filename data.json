@@ -19,6 +19,90 @@
     ],
     "pastEvents": [
         {
+            "name": "Pickleball (Women's Doubles)",
+            "date": "2025-12-06",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Starlords",
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "team": "Illuminati",
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "team": "Thunderbees",
+                    "points": 560
+                }
+            ]
+        },
+        {
+            "name": "Pickleball (Women's Singles)",
+            "date": "2025-12-06",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Thunderbees",
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "team": "Starlords",
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "team": "Firebolts",
+                    "points": 560
+                }
+            ]
+        },
+        {
+            "name": "Pickleball (Men's Doubles)",
+            "date": "2025-12-06",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Firebolts",
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "team": "Illuminati",
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "team": "Starlords",
+                    "points": 560
+                }
+            ]
+        },
+        {
+            "name": "Pickleball (Men's Singles)",
+            "date": "2025-12-06",
+            "placements": [
+                {
+                    "pos": 1,
+                    "team": "Thunderbees",
+                    "points": 1400
+                },
+                {
+                    "pos": 2,
+                    "team": "Firebolts",
+                    "points": 840
+                },
+                {
+                    "pos": 3,
+                    "team": "Starlords",
+                    "points": 560
+                }
+            ]
+        },
+        {
             "name": "Basketball",
             "date": "2025-11-22",
             "placements": [
@@ -272,78 +356,6 @@
         }
     ],
     "upcoming": [
-        {
-            "name": "Pickleball (Women's Doubles)",
-            "date": "2025-12-06",
-            "positions": [
-                {
-                    "pos": 1,
-                    "points": 1400
-                },
-                {
-                    "pos": 2,
-                    "points": 840
-                },
-                {
-                    "pos": 3,
-                    "points": 560
-                }
-            ]
-        },
-        {
-            "name": "Pickleball (Women's Singles)",
-            "date": "2025-12-06",
-            "positions": [
-                {
-                    "pos": 1,
-                    "points": 1400
-                },
-                {
-                    "pos": 2,
-                    "points": 840
-                },
-                {
-                    "pos": 3,
-                    "points": 560
-                }
-            ]
-        },
-        {
-            "name": "Pickleball (Men's Doubles)",
-            "date": "2025-12-06",
-            "positions": [
-                {
-                    "pos": 1,
-                    "points": 1400
-                },
-                {
-                    "pos": 2,
-                    "points": 840
-                },
-                {
-                    "pos": 3,
-                    "points": 560
-                }
-            ]
-        },
-        {
-            "name": "Pickleball (Men's Singles)",
-            "date": "2025-12-06",
-            "positions": [
-                {
-                    "pos": 1,
-                    "points": 1400
-                },
-                {
-                    "pos": 2,
-                    "points": 840
-                },
-                {
-                    "pos": 3,
-                    "points": 560
-                }
-            ]
-        },
         {
             "name": "Ironman 70.3 (Pending){Anikethan, Melvin, Shesh}",
             "date": "2025-11-09",
