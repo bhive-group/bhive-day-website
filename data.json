@@ -357,6 +357,132 @@
     ],
     "upcoming": [
         {
+            "name": "Badminton (Men's Singles)",
+            "date": "2025-12-13",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 2200
+                },
+                {
+                    "pos": 2,
+                    "points": 1320
+                },
+                {
+                    "pos": 3,
+                    "points": 880
+                }
+            ]
+        },
+        {
+            "name": "Badminton (Women's Singles)",
+            "date": "2025-12-13",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 2200
+                },
+                {
+                    "pos": 2,
+                    "points": 1320
+                },
+                {
+                    "pos": 3,
+                    "points": 880
+                }
+            ]
+        },
+        {
+            "name": "Badminton (Men's Doubles)",
+            "date": "2025-12-13",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 2200
+                },
+                {
+                    "pos": 2,
+                    "points": 1320
+                },
+                {
+                    "pos": 3,
+                    "points": 880
+                }
+            ]
+        },
+        {
+            "name": "Badminton (Women's Doubles)",
+            "date": "2025-12-13",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 2200
+                },
+                {
+                    "pos": 2,
+                    "points": 1320
+                },
+                {
+                    "pos": 3,
+                    "points": 880
+                }
+            ]
+        },
+        {
+            "name": "Table Tennis (Men's Singles)",
+            "date": "2025-12-13",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 1700
+                },
+                {
+                    "pos": 2,
+                    "points": 1020
+                },
+                {
+                    "pos": 3,
+                    "points": 680
+                }
+            ]
+        },
+        {
+            "name": "Table Tennis (Women's Singles)",
+            "date": "2025-12-13",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 1700
+                },
+                {
+                    "pos": 2,
+                    "points": 1020
+                },
+                {
+                    "pos": 3,
+                    "points": 680
+                }
+            ]
+        },
+        {
+            "name": "Table Tennis (Open Doubles)",
+            "date": "2025-12-13",
+            "positions": [
+                {
+                    "pos": 1,
+                    "points": 1700
+                },
+                {
+                    "pos": 2,
+                    "points": 1020
+                },
+                {
+                    "pos": 3,
+                    "points": 680
+                }
+            ]
+        },
+        {
             "name": "Ironman 70.3 (Pending){Anikethan, Melvin, Shesh}",
             "date": "2025-11-09",
             "positions": [
