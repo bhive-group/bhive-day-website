@@ -1,247 +1,566 @@
 {
   "teams": [
-    { "name": "Starlords", "color": "#4f46e5" },
-    { "name": "Illuminati", "color": "#10b981" },
-    { "name": "Firebolts", "color": "#f59e0b" },
-    { "name": "Thunderbees", "color": "#fb7185" }
+    {
+      "name": "Starlords",
+      "color": "#4f46e5"
+    },
+    {
+      "name": "Illuminati",
+      "color": "#10b981"
+    },
+    {
+      "name": "Firebolts",
+      "color": "#f59e0b"
+    },
+    {
+      "name": "Thunderbees",
+      "color": "#fb7185"
+    }
   ],
   "pastEvents": [
+    {
+      "name": "Ironman 70.3 {Anikethan, Melvin, Shesh}",
+      "date": "2025-11-22",
+      "placements": [
+        {
+          "pos": 1,
+          "team": "Firebolts",
+          "points": 4000
+        },
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 4000
+        },
+        {
+          "pos": 1,
+          "team": "Firebolts",
+          "points": 4000
+        }
+      ]
+    },
+    {
+      "name": "Ironman 70.3 Partial {Sandeep, Ravindra and Rithick}",
+      "date": "2025-11-22",
+      "placements": [
+        {
+          "pos": 1,
+          "team": "Illuminati",
+          "points": 1000
+        },
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 1000
+        },
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 1000
+        }
+      ]
+    },
     {
       "name": "Pickleball (Women's Doubles)",
       "date": "2025-12-06",
       "placements": [
-        { "pos": 1, "team": "Starlords", "points": 1400 },
-        { "pos": 2, "team": "Illuminati", "points": 840 },
-        { "pos": 3, "team": "Thunderbees", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Illuminati",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Thunderbees",
+          "points": 560
+        }
       ]
     },
     {
       "name": "Pickleball (Women's Singles)",
       "date": "2025-12-06",
       "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 1400 },
-        { "pos": 2, "team": "Starlords", "points": 840 },
-        { "pos": 3, "team": "Firebolts", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Thunderbees",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Starlords",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Firebolts",
+          "points": 560
+        }
       ]
     },
     {
       "name": "Pickleball (Men's Doubles)",
       "date": "2025-12-06",
       "placements": [
-        { "pos": 1, "team": "Firebolts", "points": 1400 },
-        { "pos": 2, "team": "Illuminati", "points": 840 },
-        { "pos": 3, "team": "Starlords", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Firebolts",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Illuminati",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 560
+        }
       ]
     },
     {
       "name": "Pickleball (Men's Singles)",
       "date": "2025-12-06",
       "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 1400 },
-        { "pos": 2, "team": "Firebolts", "points": 840 },
-        { "pos": 3, "team": "Starlords", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Thunderbees",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Firebolts",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 560
+        }
       ]
     },
     {
       "name": "Basketball",
       "date": "2025-11-22",
       "placements": [
-        { "pos": 1, "team": "Illuminati", "points": 6500 },
-        { "pos": 2, "team": "Starlords", "points": 3900 },
-        { "pos": 3, "team": "Thunderbees", "points": 2600 }
+        {
+          "pos": 1,
+          "team": "Illuminati",
+          "points": 6500
+        },
+        {
+          "pos": 2,
+          "team": "Starlords",
+          "points": 3900
+        },
+        {
+          "pos": 3,
+          "team": "Thunderbees",
+          "points": 2600
+        }
       ]
     },
     {
       "name": "Carrom (Open Doubles)",
       "date": "2025-11-14",
       "placements": [
-        { "pos": 1, "team": "Firebolts", "points": 1500 },
-        { "pos": 2, "team": "Thunderbees", "points": 900 },
-        { "pos": 3, "team": "Starlords", "points": 600 }
+        {
+          "pos": 1,
+          "team": "Firebolts",
+          "points": 1500
+        },
+        {
+          "pos": 2,
+          "team": "Thunderbees",
+          "points": 900
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 600
+        }
       ]
     },
     {
       "name": "Carrom (Open Singles)",
       "date": "2025-11-14",
       "placements": [
-        { "pos": 1, "team": "Starlords", "points": 1500 },
-        { "pos": 2, "team": "Illuminati", "points": 900 },
-        { "pos": 3, "team": "Thunderbees", "points": 600 }
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 1500
+        },
+        {
+          "pos": 2,
+          "team": "Illuminati",
+          "points": 900
+        },
+        {
+          "pos": 3,
+          "team": "Thunderbees",
+          "points": 600
+        }
       ]
     },
     {
       "name": "Chess",
       "date": "2025-11-07",
       "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 1400 },
-        { "pos": 2, "team": "Thunderbees", "points": 840 },
-        { "pos": 3, "team": "Illuminati", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Thunderbees",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Thunderbees",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Illuminati",
+          "points": 560
+        }
       ]
     },
     {
       "name": "Extempore",
       "date": "2025-09-19",
       "placements": [
-        { "pos": 1, "team": "Starlords", "points": 1400 },
-        { "pos": 2, "team": "Firebolts", "points": 840 },
-        { "pos": 3, "team": "Starlords", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Firebolts",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 560
+        }
       ]
     },
     {
       "name": "Foosball",
       "date": "2025-09-12",
       "placements": [
-        { "pos": 1, "team": "Illuminati", "points": 2500 },
-        { "pos": 2, "team": "Firebolts", "points": 1500 },
-        { "pos": 3, "team": "Thunderbees", "points": 1000 }
+        {
+          "pos": 1,
+          "team": "Illuminati",
+          "points": 2500
+        },
+        {
+          "pos": 2,
+          "team": "Firebolts",
+          "points": 1500
+        },
+        {
+          "pos": 3,
+          "team": "Thunderbees",
+          "points": 1000
+        }
       ]
     },
     {
       "name": "8 Ball Pool (Open Doubles)",
       "date": "2025-09-06",
       "placements": [
-        { "pos": 1, "team": "Illuminati", "points": 1500 },
-        { "pos": 2, "team": "Thunderbees", "points": 900 },
-        { "pos": 3, "team": "Firebolts", "points": 600 }
+        {
+          "pos": 1,
+          "team": "Illuminati",
+          "points": 1500
+        },
+        {
+          "pos": 2,
+          "team": "Thunderbees",
+          "points": 900
+        },
+        {
+          "pos": 3,
+          "team": "Firebolts",
+          "points": 600
+        }
       ]
     },
     {
       "name": "8 Ball Pool (Open Singles)",
       "date": "2025-09-06",
       "placements": [
-        { "pos": 1, "team": "Starlords", "points": 1500 },
-        { "pos": 2, "team": "Thunderbees", "points": 900 },
-        { "pos": 3, "team": "Illuminati", "points": 600 }
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 1500
+        },
+        {
+          "pos": 2,
+          "team": "Thunderbees",
+          "points": 900
+        },
+        {
+          "pos": 3,
+          "team": "Illuminati",
+          "points": 600
+        }
       ]
     },
     {
       "name": "Lemon & Spoon",
       "date": "2025-09-05",
       "placements": [
-        { "pos": 1, "team": "Starlords", "points": 1000 },
-        { "pos": 2, "team": "Firebolts", "points": 600 },
-        { "pos": 3, "team": "Illuminati", "points": 400 }
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 1000
+        },
+        {
+          "pos": 2,
+          "team": "Firebolts",
+          "points": 600
+        },
+        {
+          "pos": 3,
+          "team": "Illuminati",
+          "points": 400
+        }
       ]
     },
     {
       "name": "Name the Logo & Tagline",
       "date": "2025-09-05",
       "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 1400 },
-        { "pos": 2, "team": "Firebolts", "points": 840 },
-        { "pos": 3, "team": "Illuminati", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Thunderbees",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Firebolts",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Illuminati",
+          "points": 560
+        }
       ]
     },
     {
       "name": "Dart",
       "date": "2025-09-05",
       "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 1400 },
-        { "pos": 2, "team": "Starlords", "points": 840 },
-        { "pos": 3, "team": "Illuminati", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Thunderbees",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Starlords",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Illuminati",
+          "points": 560
+        }
       ]
     },
     {
       "name": "Rangoli",
       "date": "2025-08-26",
       "placements": [
-        { "pos": 1, "team": "Illuminati", "points": 1400 },
-        { "pos": 2, "team": "Starlords", "points": 840 },
-        { "pos": 3, "team": "Firebolts", "points": 560 }
+        {
+          "pos": 1,
+          "team": "Illuminati",
+          "points": 1400
+        },
+        {
+          "pos": 2,
+          "team": "Starlords",
+          "points": 840
+        },
+        {
+          "pos": 3,
+          "team": "Firebolts",
+          "points": 560
+        }
       ]
     },
-
     {
       "name": "Badminton (Men's Singles)",
       "date": "2025-12-13",
       "placements": [
-        { "pos": 1, "team": "Firebolts", "points": 2200 },
-        { "pos": 2, "team": "Thunderbees", "points": 1320 },
-        { "pos": 3, "team": "Starlords", "points": 880 }
+        {
+          "pos": 1,
+          "team": "Firebolts",
+          "points": 2200
+        },
+        {
+          "pos": 2,
+          "team": "Thunderbees",
+          "points": 1320
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 880
+        }
       ]
     },
     {
       "name": "Badminton (Women's Singles)",
       "date": "2025-12-13",
       "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 2200 },
-        { "pos": 2, "team": "Firebolts", "points": 1320 },
-        { "pos": 3, "team": "Starlords", "points": 880 }
+        {
+          "pos": 1,
+          "team": "Thunderbees",
+          "points": 2200
+        },
+        {
+          "pos": 2,
+          "team": "Firebolts",
+          "points": 1320
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 880
+        }
       ]
     },
     {
       "name": "Badminton (Men's Doubles)",
       "date": "2025-12-13",
       "placements": [
-        { "pos": 1, "team": "Firebolts", "points": 2200 },
-        { "pos": 2, "team": "Illuminati", "points": 1320 },
-        { "pos": 3, "team": "Starlords", "points": 880 }
+        {
+          "pos": 1,
+          "team": "Firebolts",
+          "points": 2200
+        },
+        {
+          "pos": 2,
+          "team": "Illuminati",
+          "points": 1320
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 880
+        }
       ]
     },
     {
       "name": "Badminton (Women's Doubles)",
       "date": "2025-12-13",
       "placements": [
-        { "pos": 1, "team": "Starlords", "points": 2200 },
-        { "pos": 2, "team": "Thunderbees", "points": 1320 },
-        { "pos": 3, "team": "Firebolts", "points": 880 }
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 2200
+        },
+        {
+          "pos": 2,
+          "team": "Thunderbees",
+          "points": 1320
+        },
+        {
+          "pos": 3,
+          "team": "Firebolts",
+          "points": 880
+        }
       ]
     },
-
     {
       "name": "Table Tennis (Men's Singles)",
       "date": "2025-12-13",
       "placements": [
-        { "pos": 1, "team": "Thunderbees", "points": 1700 },
-        { "pos": 2, "team": "Firebolts", "points": 1020 },
-        { "pos": 3, "team": "Starlords", "points": 680 }
+        {
+          "pos": 1,
+          "team": "Thunderbees",
+          "points": 1700
+        },
+        {
+          "pos": 2,
+          "team": "Firebolts",
+          "points": 1020
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 680
+        }
       ]
     },
     {
       "name": "Table Tennis (Women's Singles)",
       "date": "2025-12-13",
       "placements": [
-        { "pos": 1, "team": "Starlords", "points": 1700 },
-        { "pos": 2, "team": "Thunderbees", "points": 1020 },
-        { "pos": 3, "team": "Firebolts", "points": 680 }
+        {
+          "pos": 1,
+          "team": "Starlords",
+          "points": 1700
+        },
+        {
+          "pos": 2,
+          "team": "Thunderbees",
+          "points": 1020
+        },
+        {
+          "pos": 3,
+          "team": "Firebolts",
+          "points": 680
+        }
       ]
     },
     {
       "name": "Table Tennis (Open Doubles)",
       "date": "2025-12-13",
       "placements": [
-        { "pos": 1, "team": "Illuminati", "points": 1700 },
-        { "pos": 2, "team": "Firebolts", "points": 1020 },
-        { "pos": 3, "team": "Starlords", "points": 680 }
+        {
+          "pos": 1,
+          "team": "Illuminati",
+          "points": 1700
+        },
+        {
+          "pos": 2,
+          "team": "Firebolts",
+          "points": 1020
+        },
+        {
+          "pos": 3,
+          "team": "Starlords",
+          "points": 680
+        }
       ]
     }
   ],
   "upcoming": [
     {
-      "name": "Ironman 70.3 (Pending){Anikethan, Melvin, Shesh}",
-      "date": "2025-11-09",
+      "name": "Next Event",
+      "date": "TBD",
       "positions": [
-        { "pos": 1, "points": 4000 },
-        { "pos": 2, "points": 0 },
-        { "pos": 3, "points": 0 }
-      ]
-    },
-    {
-      "name": "Ironman 70.3 Partial (Pending){Sandeep, Ravindra and Rithick}",
-      "date": "2025-11-09",
-      "positions": [
-        { "pos": 1, "points": 1000 },
-        { "pos": 2, "points": 0 },
-        { "pos": 3, "points": 0 }
-      ]
-    },
-    {
-      "name": "Field Cricket (Sample Draft)",
-      "date": "1970-01-01",
-      "positions": [
-        { "pos": 1, "points": 10500 },
-        { "pos": 2, "points": 6300 },
-        { "pos": 3, "points": 4200 }
+        {
+          "pos": 1,
+          "points": 0
+        },
+        {
+          "pos": 2,
+          "points": 0
+        },
+        {
+          "pos": 3,
+          "points": 0
+        }
       ]
     }
   ],
@@ -250,27 +569,5 @@
     "2": "#8B4E2F",
     "3": "#6e6e6e",
     "4": "#bdbdbd"
-  },
-  "extra": {
-    "tempOne": [
-      {
-        "name": "Ironman 70.3 (Pending){Anikethan, Melvin, Shesh}",
-        "date": "2025-11-22",
-        "placements": [
-          { "pos": 1, "team": "Firebolts", "points": 4000 },
-          { "pos": 2, "team": "Firebolts", "points": 4000 },
-          { "pos": 3, "team": "Starlords", "points": 4000 }
-        ]
-      },
-      {
-        "name": "Ironman 70.3 Partial (Pending){Sandeep, Ravindra and Rithick}",
-        "date": "2025-11-22",
-        "placements": [
-          { "pos": 1, "team": "Illuminati", "points": 1000 },
-          { "pos": 2, "team": "Starlords", "points": 1000 },
-          { "pos": 3, "team": "Starlords", "points": 1000 }
-        ]
-      }
-    ]
   }
 }
